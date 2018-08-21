@@ -1,7 +1,6 @@
-import { Dictionary } from 'lodash';
 import { KunaAssetUnit } from './asset';
 
-export type KunaPair = {
+export type KunaMarket = {
     key: string;
     baseAsset: KunaAssetUnit;
     quoteAsset: KunaAssetUnit;
@@ -9,7 +8,7 @@ export type KunaPair = {
     compareTo?: string;
 };
 
-export const kunaPairMap: Dictionary<KunaPair> = {
+export const kunaMarketMap: Record<string, KunaMarket> = {
     btcuah: {
         key: 'btcuah',
         baseAsset: KunaAssetUnit.Bitcoin,

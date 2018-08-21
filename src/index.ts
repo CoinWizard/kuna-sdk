@@ -1,7 +1,7 @@
 export { KunaTicker } from './ticker';
 export { KunaAssetUnit, KunaAsset, kunaAssets, getAsset } from './asset';
-export { KunaPair, kunaPairMap } from './pair';
+export { KunaMarket, kunaMarketMap } from './markets';
 import { KunaApiClient } from './api-client';
 
-const kunaApiClient: KunaApiClient = new KunaApiClient();
-export { KunaApiClient, kunaApiClient };
+export { KunaApiClient };
+export const kunaApiClient: KunaApiClient = new KunaApiClient();
