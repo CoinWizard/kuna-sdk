@@ -15,6 +15,7 @@
         "tag:minor": "yarn version --new-version minor",
         "publish:alpha": "yarn publish --tag next"
     },
+    "repository": "https://github.com/CoinWizard/kuna-sdk",
     "homepage": "https://kuna.io",
     "author": "CoinWizard Team <info@coinwizard.me>",
     "license": "LGPL-3.0",
