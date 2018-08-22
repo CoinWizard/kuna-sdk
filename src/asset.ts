@@ -1,3 +1,5 @@
+import { AssetColor } from './colors';
+
 export enum KunaAssetUnit {
     Bitcoin = 'BTC',
     Ethereum = 'ETH',
@@ -39,178 +41,178 @@ export enum KunaAssetUnit {
 
 export type KunaAsset = {
     key: KunaAssetUnit | string;
-    name: string
-    color: string
-    format: string
+    name: string;
+    color: AssetColor | string;
+    format: string;
 };
 
 export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
     [KunaAssetUnit.Bitcoin]: {
         key: KunaAssetUnit.Bitcoin,
         name: 'Bitcoin',
-        color: '#f7931a',
+        color: AssetColor.Bitcoin,
         format: '0,0.[000000]',
     },
     [KunaAssetUnit.Ethereum]: {
         key: KunaAssetUnit.Ethereum,
         name: 'Ethereum',
-        color: '#434348',
+        color: AssetColor.Ethereum,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Dash]: {
         key: KunaAssetUnit.Dash,
         name: 'Dash',
-        color: '#0096C8',
+        color: AssetColor.Dash,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Litecoin]: {
         key: KunaAssetUnit.Litecoin,
         name: 'Litecoin',
-        color: '#cbc6c6',
+        color: AssetColor.Litecoin,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.UkrainianHryvnia]: {
         key: KunaAssetUnit.UkrainianHryvnia,
         name: 'Ukrainian Hryvnia',
-        color: '#d8c566',
+        color: AssetColor.UkrainianHryvnia,
         format: '0,0.[00]',
     },
     [KunaAssetUnit.KunaToken]: {
         key: KunaAssetUnit.KunaToken,
         name: 'Kun',
-        color: '#11a0ff',
+        color: AssetColor.KunaToken,
         format: '0,0',
     },
     [KunaAssetUnit.BitcoinCash]: {
         key: KunaAssetUnit.BitcoinCash,
         name: 'Bitcoin Cash',
-        color: '#f7931a',
+        color: AssetColor.BitcoinCash,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Waves]: {
         key: KunaAssetUnit.Waves,
         name: 'Waves',
-        color: '#0096C8',
+        color: AssetColor.Waves,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.GolosGold]: {
         key: KunaAssetUnit.GolosGold,
         name: 'Golos Gold',
-        color: '#dab236',
+        color: AssetColor.GolosGold,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Golos]: {
         key: KunaAssetUnit.Golos,
         name: 'Golos',
-        color: '#2768aa',
+        color: AssetColor.Golos,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.RussianMinerCoin]: {
         key: KunaAssetUnit.RussianMinerCoin,
         name: 'Russian Miner Coin',
-        color: '#d21f26',
+        color: AssetColor.RussianMinerCoin,
         format: '0,0.[00]',
     },
     [KunaAssetUnit.Revain]: {
         key: KunaAssetUnit.Revain,
         name: 'Revain',
-        color: '#bd2df5',
+        color: AssetColor.Revain,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Aeron]: {
         key: KunaAssetUnit.Aeron,
         name: 'Aeron',
-        color: '#135180',
+        color: AssetColor.Aeron,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Everus]: {
         key: KunaAssetUnit.Everus,
         name: 'Everus',
-        color: '#35beb4',
+        color: AssetColor.Everus,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.B2bx]: {
         key: KunaAssetUnit.B2bx,
         name: 'B2bx',
-        color: '#00a275',
+        color: AssetColor.B2bx,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Ripple]: {
         key: KunaAssetUnit.Ripple,
         name: 'Ripple',
-        color: '#0096C8',
+        color: AssetColor.Ripple,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.EOS]: {
         key: KunaAssetUnit.EOS,
         name: 'EOS',
-        color: '#0096C8',
+        color: AssetColor.EOS,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.FoodCoin]: {
         key: KunaAssetUnit.FoodCoin,
         name: 'FoodCoin',
-        color: '#0096C8',
+        color: AssetColor.FoodCoin,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Octanox]: {
         key: KunaAssetUnit.Octanox,
         name: 'Octanox',
-        color: '#0096C8',
+        color: AssetColor.Octanox,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Hacken]: {
         key: KunaAssetUnit.Hacken,
         name: 'Hacken',
-        color: '#0096C8',
+        color: AssetColor.Hacken,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Stellar]: {
         key: KunaAssetUnit.Stellar,
         name: 'Stellar',
-        color: '#0096C8',
+        color: AssetColor.Stellar,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.TrueUSD]: {
         key: KunaAssetUnit.TrueUSD,
         name: 'TrueUSD',
-        color: '#0096C8',
+        color: AssetColor.TrueUSD,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.ZCash]: {
         key: KunaAssetUnit.ZCash,
         name: 'ZCash',
-        color: '#0096C8',
+        color: AssetColor.ZCash,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Venus]: {
         key: KunaAssetUnit.Venus,
         name: 'Venus',
-        color: '#0096C8',
+        color: AssetColor.Venus,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.ERC20]: {
         key: KunaAssetUnit.ERC20,
         name: 'ERC20',
-        color: '#0096C8',
+        color: AssetColor.ERC20,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Remme]: {
         key: KunaAssetUnit.Remme,
         name: 'Remme',
-        color: '#0096C8',
+        color: AssetColor.Remme,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Karbo]: {
         key: KunaAssetUnit.Karbo,
         name: 'Karbo',
-        color: '#0096C8',
+        color: AssetColor.Karbo,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Nem]: {
         key: KunaAssetUnit.Nem,
         name: 'Nem',
-        color: '#0096C8',
+        color: AssetColor.Nem,
         format: '0,0.[0000]',
     },
 };
