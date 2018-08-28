@@ -153,7 +153,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         key: 'foodbtc',
         baseAsset: KunaAssetUnit.FoodCoin,
         quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
+        format: '0,0.[00000000]',
     },
     erc20btc: {
         key: 'erc20btc',
@@ -171,7 +171,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         key: 'venusbtc',
         baseAsset: KunaAssetUnit.Venus,
         quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
+        format: '0,0.[00000000]',
     },
 
     // to Stasis Euro

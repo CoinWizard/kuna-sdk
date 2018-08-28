@@ -2,9 +2,9 @@ import Axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { map } from 'lodash';
 import { create as createDebugger } from './debugger';
 
-function mapTicker(pairKey: string, tickerResponse: any): KunaTicker {
+function mapTicker(marketSymbol: string, tickerResponse: any): KunaTicker {
     return {
-        pair: pairKey,
+        market: marketSymbol,
         ...tickerResponse,
     };
 }
@@ -28,12 +28,12 @@ export class KunaApiClient {
         this.debug = createDebugger('api-client');
     }
 
-    public async getTicker(pair: string): Promise<KunaTicker> {
-        const { data }: AxiosResponse = await this.axiosClient.get(`/tickers/${pair}`);
+    public async getTicker(market: string): Promise<KunaTicker> {
+        const { data }: AxiosResponse = await this.axiosClient.get(`/tickers/${market}`);
 
         this.debug('GET_TICKER', data);
 
-        return mapTicker(pair, data.ticker);
+        return mapTicker(market, data.ticker);
     }
 
     public async getTickers(): Promise<KunaTicker[]> {
@@ -41,8 +41,8 @@ export class KunaApiClient {
 
         this.debug('GET_TICKERS', data);
 
-        return map(data, (tickerResponse: any, pair: string) => {
-            return mapTicker(pair, tickerResponse.ticker);
+        return map(data, (tickerResponse: any, market: string) => {
+            return mapTicker(market, tickerResponse.ticker);
         });
     }
 }

@@ -1,6 +1,6 @@
 declare global {
     type KunaTicker = {
-        pair: string;
+        market: string;
         buy: string;
         sell: string;
         low: string;
