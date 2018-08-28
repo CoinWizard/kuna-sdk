@@ -27,10 +27,11 @@ export enum KunaAssetUnit {
     Octanox = 'OTX',
     Hacken = 'HKN',
     ZCash = 'ZEC',
+    Stellar = 'XLM',
+
     TrueUSD = 'TUSD',
     Tether = 'USDT',
-    StatisEuro = 'EURS',
-    Stellar = 'XLM',
+    StasisEuro = 'EURS',
 
     KunaToken = 'KUN',
 

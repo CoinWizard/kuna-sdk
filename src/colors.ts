@@ -29,9 +29,11 @@ export enum AssetColor {
     Octanox = '#6E9C36',
     Hacken = '#31A4B2',
     ZCash = '#222',
+    Stellar = '#566871',
+
     Tether = '#00A275',
     TrueUSD = '#00A275',
-    Stellar = '#566871',
+    StasisEuro = '#2468E4',
 
     KunaToken = '#2E71F0',
 

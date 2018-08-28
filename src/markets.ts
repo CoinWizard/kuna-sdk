@@ -93,6 +93,24 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
     },
+    xlmuah: {
+        key: 'xlmuah',
+        baseAsset: KunaAssetUnit.Stellar,
+        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+        format: '0,0.[000000]',
+    },
+    tusduah: {
+        key: 'tusduah',
+        baseAsset: KunaAssetUnit.TrueUSD,
+        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+        format: '0,0.[00]',
+    },
+    eursuah: {
+        key: 'eursuah',
+        baseAsset: KunaAssetUnit.StasisEuro,
+        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+        format: '0,0.[0000]',
+    },
 
     // to Bitcoin
     kunbtc: {
@@ -155,16 +173,12 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
     },
-    xlmuah: {
-        key: 'xlmuah',
-        baseAsset: KunaAssetUnit.Stellar,
-        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
-        format: '0,0.[000000]',
-    },
-    tusduah: {
-        key: 'tusduah',
-        baseAsset: KunaAssetUnit.TrueUSD,
-        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+
+    // to Stasis Euro
+    btceurs: {
+        key: 'btceurs',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.StasisEuro,
         format: '0,0.[000000]',
     },
 
