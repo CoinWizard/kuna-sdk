@@ -13,8 +13,8 @@
         "suppressImplicitAnyIndexErrors": true,
         "rootDir": "./src",
         "baseUrl": "./src",
-        "declarationDir": "dist/types",
-        "outDir": "dist/lib",
+        "declarationDir": "lib",
+        "outDir": "lib",
         "typeRoots": [
             "src/definitions",
             "node_modules/@types"

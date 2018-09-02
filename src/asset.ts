@@ -216,6 +216,12 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         color: AssetColor.Nem,
         format: '0,0.[0000]',
     },
+    [KunaAssetUnit.StasisEuro]: {
+        key: KunaAssetUnit.StasisEuro,
+        name: 'Stasis Euro',
+        color: AssetColor.StasisEuro,
+        format: '0,0.[00]',
+    },
 };
 
 export function getAsset(assetUnit: KunaAssetUnit): KunaAsset {

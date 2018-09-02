@@ -1,6 +1,6 @@
 {
     "name": "kuna-sdk",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "NodeJS SDK for Kuna exchange for API v2",
     "keywords": [
         "kuna.io",
@@ -8,7 +8,7 @@
         "exchange api"
     ],
     "scripts": {
-        "build": "rm -rf ./dist && tsc --esModuleInterop",
+        "build": "rm -rf ./lib && tsc --esModuleInterop",
         "test": "mocha -t 20000",
         "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --bail -t 20000 --slow 99999 -R dot",
         "tag:patch": "yarn version --new-version patch",
@@ -19,8 +19,8 @@
     "homepage": "https://kuna.io",
     "author": "CoinWizard Team <info@coinwizard.me>",
     "license": "LGPL-3.0",
-    "main": "dist/lib/index.js",
-    "types": "dist/types/index.d.ts",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
     "dependencies": {
         "axios": "0.18.0",
         "debug": "^3.1.0",
