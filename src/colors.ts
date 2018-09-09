@@ -10,7 +10,7 @@ export enum AssetColor {
     BitcoinCash = '#F7931A',
     Ripple = '#222222',
 
-    Waves = '#0096C8',
+    Waves = '#0056FF',
     Golos = '#2768AA',
     GolosGold = '#DAB236',
 
