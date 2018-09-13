@@ -26,6 +26,7 @@ export enum KunaAssetUnit {
     FoodCoin = 'FOOD',
     Octanox = 'OTX',
     Hacken = 'HKN',
+    NanjCoin = 'NANJ',
     ZCash = 'ZEC',
     Stellar = 'XLM',
 
@@ -220,6 +221,12 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         key: KunaAssetUnit.StasisEuro,
         name: 'Stasis Euro',
         color: AssetColor.StasisEuro,
+        format: '0,0.[00]',
+    },
+    [KunaAssetUnit.NanjCoin]: {
+        key: KunaAssetUnit.NanjCoin,
+        name: 'Nanjcoin',
+        color: AssetColor.NanjCoin,
         format: '0,0.[00]',
     },
 };

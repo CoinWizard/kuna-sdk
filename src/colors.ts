@@ -28,6 +28,7 @@ export enum AssetColor {
     FoodCoin = '#DA760F',
     Octanox = '#6E9C36',
     Hacken = '#31A4B2',
+    NanjCoin = '#0970b3',
     ZCash = '#222',
     Stellar = '#566871',
 
