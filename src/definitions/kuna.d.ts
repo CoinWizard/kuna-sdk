@@ -16,37 +16,78 @@ declare global {
         bids: [[number, number]];
     };
 
+    type UserAccount = {
+        currency: string;
+        balance: number;
+        locked: number;
+    }
+
     type UserInfo = {
         email: string;
-        accounts: [{ currency: string; balance: number; locked: number }];
+        accounts: UserAccount[];
     };
 
     type Trade = {
-        id: number; //trade ID
+        // trade ID
+        id: number;
         price: number;
         volume: number;
-        funds: number; //volume in UAH
-        market: string; //market ID,
-        created_at: string; //string representation of UTC date, can be easy converted to Date object
-        side: any; //always null it's documented this way, it will be interesting to find out if this is sell or buy side order
+
+        // volume in UAH
+        funds: number;
+
+        // market ID
+        market: string;
+
+        /**
+         * string representation of UTC date, can be easy converted to Date object
+         */
+        created_at: string;
+
+        /**
+         * always null it's documented this way,
+         * it will be interesting to find out if this is sell or buy side order
+         */
+        side: any;
     };
 
     type Order = {
-        id: number; // order ID,
-        side: string; // buy or sell,
-        ord_type: string; // order typ — limit or market,
-        price: number; // price for 1 BTC,
-        avg_price: number; // the average trade price for the order,
-        state: string; // order state — always wait,
-        market: string; // market ID,
-        created_at: string; // the time of placing the order,
-        volume: number; // volume of trading in BTC,
-        remaining_volume: number; // unfilled amount of BTC,
-        executed_volume: number; // sold amount of BTC,
-        trades_count: number; // the number of the trades on the order
+        // order ID
+        id: number;
+
+        // buy or sell
+        side: string;
+
+        // order type limit or market
+        ord_type: string;
+
+        // price for 1 BTC
+        price: number;
+
+        // the average trade price for the order
+        avg_price: number;
+
+        // order state always wait
+        state: string;
+
+        // market ID
+        market: string;
+
+        // the time of placing the order
+        created_at: string;
+
+        // volume of trading in BTC
+        volume: number;
+
+        // unfilled amount of BTC
+        remaining_volume: number;
+
+        // sold amount of BTC
+        executed_volume: number;
+
+        // the number of the trades on the order
+        trades_count: number;
     };
-
-
 }
 
-export { };
+export {};
