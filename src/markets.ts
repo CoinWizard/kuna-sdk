@@ -179,4 +179,11 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.Ethereum,
         format: '0,0.[00000000]',
     },
+    
+    nanjbtc : {
+        key: 'nanjbtc',
+        baseAsset: KunaAssetUnit.NanjCoin,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[000000]',
+    }
 };
