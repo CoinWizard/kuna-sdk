@@ -3,6 +3,8 @@ import qs from 'qs';
 import { map, flatMap, chain } from 'lodash';
 import crypto from 'crypto';
 import { URL } from 'url';
+
+import { KunaTicker, KunaOrder, KunaOrderBook, KunaTrade, KunaUserAccount, KunaUserInfo } from './types';
 import { create as createDebugger } from './debugger';
 import { mapOrder, mapTicker, mapTrade } from './utils';
 
@@ -34,22 +36,23 @@ export class KunaApiClient {
     }
 
     public async getTimeStamp(): Promise<number> {
-        const {data}: AxiosResponse = await this.axiosClient.get('/timestamp');
+        const { data }: AxiosResponse = await this.axiosClient.get('/timestamp');
 
         this.debug('getTimeStamp() ', data);
+
         return data;
     }
 
     public async getTicker(market: string): Promise<KunaTicker> {
-        const {data}: AxiosResponse = await this.axiosClient.get(`/tickers/${market}`);
+        const { data }: AxiosResponse = await this.axiosClient.get(`/tickers/${market}`);
 
-        this.debug('getTicker(' + market + ') ', data);
+        this.debug(`getTicker(${market}) `, data);
 
         return mapTicker(market, data.ticker);
     }
 
     public async getTickers(): Promise<KunaTicker[]> {
-        const {data}: AxiosResponse = await this.axiosClient.get(`/tickers`);
+        const { data }: AxiosResponse = await this.axiosClient.get(`/tickers`);
 
         this.debug('getTickers() ', data);
 
@@ -58,53 +61,55 @@ export class KunaApiClient {
         });
     }
 
-    public async getOrderBook(market: string): Promise<OrderBook> {
-        const {data}: AxiosResponse = await this.axiosClient.get(`/depth?market=${market}`);
+    public async getOrderBook(market: string): Promise<KunaOrderBook> {
+        const { data }: AxiosResponse = await this.axiosClient.get(`/depth?market=${market}`);
 
-        this.debug('getOrderBook(${market)=', data);
-        
-        //kuna returns asks prices in descending order, that is not expected and different from binance response
+        this.debug(`getOrderBook(${market}) = `, data);
+
+        // kuna returns asks prices in descending order,
+        // that is not expected and different from binance response
         data.asks.sort(function (a, b) {
             if (+a[0] === +b[0]) return 0;
             else return (+a[0] < +b[0]) ? -1 : 1;
-        })
-        return data;
-    }
-
-    public async getTrades(market: string): Promise<Trade[]> {
-        const {data}: AxiosResponse = await this.axiosClient.get(`/trades?market=${market}`);
-
-        this.debug('getTrades(${market)=', data);
-
-        return flatMap(data, mapTrade);
-    }
-
-    public async getUserInfo(): Promise<UserInfo> {
-        const data: UserInfo = await this.privateRequest<UserInfo>('/members/me');
-
-        this.debug('getUserInfo data=', data);
+        });
 
         return data;
     }
 
-    public async getUserTrades(market: string): Promise<Trade[]> {
-        const data = await this.privateRequest('/trades/my', {market: market});
+    public async getTrades(market: string): Promise<KunaTrade[]> {
+        const { data }: AxiosResponse = await this.axiosClient.get(`/trades?market=${market}`);
 
-        this.debug('getUserTrades data=', data);
+        this.debug(`getTrades(${market}) = `, data);
 
         return flatMap(data, mapTrade);
     }
 
-    public async getUserOrders(market: string): Promise<Order[]> {
-        const data = await this.privateRequest('/orders', {market: market});
+    public async getUserInfo(): Promise<KunaUserInfo> {
+        const data: KunaUserInfo = await this.privateRequest<KunaUserInfo>('/members/me');
 
-        this.debug('getUserTrades data=', data);
+        this.debug('getUserInfo data = ', data);
+
+        return data;
+    }
+
+    public async getUserTrades(market: string): Promise<KunaTrade[]> {
+        const data = await this.privateRequest('/trades/my', { market: market });
+
+        this.debug('getUserTrades data = ', data);
+
+        return flatMap(data, mapTrade);
+    }
+
+    public async getUserOrders(market: string): Promise<KunaOrder[]> {
+        const data = await this.privateRequest('/orders', { market: market });
+
+        this.debug('getUserTrades data = ', data);
 
         return flatMap(data, mapOrder);
     }
 
 
-    public async newOrder(side: string, volume: number, market: string, price: number): Promise<Order> {
+    public async newOrder(side: string, volume: number, market: string, price: number): Promise<KunaOrder> {
         const requestParams = {
             market: market,
             price: price,
@@ -119,9 +124,9 @@ export class KunaApiClient {
         return mapOrder(data);
     }
 
-    public async cancelOrder(id: number): Promise<Order> {
+    public async cancelOrder(id: number): Promise<KunaOrder> {
 
-        const data = await this.privateRequest('/order/delete', {id: id}, 'POST');
+        const data = await this.privateRequest('/order/delete', { id: id }, 'POST');
 
         this.debug('newOrder data=', data);
 
@@ -140,7 +145,7 @@ export class KunaApiClient {
         const signature = this.signRequest(method, path, requestParams);
         const methodUrl = path + '?' + qs.stringify(requestParams);
 
-        const {data}: AxiosResponse = await this.axiosClient.request({
+        const { data }: AxiosResponse = await this.axiosClient.request({
             url: `${methodUrl}&signature=${signature}`,
             method: method,
         });
@@ -172,7 +177,7 @@ export class KunaApiClient {
         const assortedParams = chain(params).toPairs().sortBy(0).fromPairs().value();
 
         const queryString = `${httpVerb}|${u.pathname}|${qs.stringify(assortedParams)}`;
-        
+
         return crypto.createHmac('sha256', this.secretKey)
             .update(queryString)
             .digest('hex');

@@ -1,4 +1,4 @@
-export { KunaTicker } from './ticker';
+export { KunaTicker, KunaOrder, KunaOrderBook, KunaTrade, KunaUserAccount, KunaUserInfo } from './types';
 export { AssetColor } from './colors';
 export { KunaAssetUnit, KunaAsset, kunaAssets, getAsset } from './asset';
 export { KunaMarket, kunaMarketMap } from './markets';

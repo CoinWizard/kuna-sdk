@@ -9,6 +9,9 @@ export type KunaMarket = {
 };
 
 export const kunaMarketMap: Record<string, KunaMarket> = {
+    /**
+     * to UAH
+     */
     btcuah: {
         key: 'btcuah',
         baseAsset: KunaAssetUnit.Bitcoin,
@@ -112,7 +115,21 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[0000]',
     },
 
-    // to Bitcoin
+    /**
+     * to Bitcoin
+     */
+    ethbtc: {
+        key: 'ethbtc',
+        baseAsset: KunaAssetUnit.Ethereum,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[0000]',
+    },
+    eosbtc: {
+        key: 'eosbtc',
+        baseAsset: KunaAssetUnit.EOS,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[000000]',
+    },
     kunbtc: {
         key: 'kunbtc',
         baseAsset: KunaAssetUnit.KunaToken,
@@ -122,6 +139,18 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
     bchbtc: {
         key: 'bchbtc',
         baseAsset: KunaAssetUnit.BitcoinCash,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[000000]',
+    },
+    hknbtc: {
+        key: 'hknbtc',
+        baseAsset: KunaAssetUnit.Hacken,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[000000]',
+    },
+    nanjbtc : {
+        key: 'nanjbtc',
+        baseAsset: KunaAssetUnit.NanjCoin,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
     },
@@ -149,14 +178,10 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[00000]',
     },
-    hknbtc: {
-        key: 'hknbtc',
-        baseAsset: KunaAssetUnit.Hacken,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
-    },
 
-    // to Stasis Euro
+    /**
+     * to Stasis Euro
+     */
     btceurs: {
         key: 'btceurs',
         baseAsset: KunaAssetUnit.Bitcoin,
@@ -164,7 +189,9 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[000000]',
     },
 
-    // to Golos Gold
+    /**
+     * to Golos Gold
+     */
     golgbg: {
         key: 'golgbg',
         baseAsset: KunaAssetUnit.Golos,
@@ -172,18 +199,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[0000]',
     },
 
-    // to Ethereum
+    /**
+     * to Ethereum
+     */
     remeth: {
         key: 'remeth',
         baseAsset: KunaAssetUnit.Remme,
         quoteAsset: KunaAssetUnit.Ethereum,
         format: '0,0.[00000000]',
     },
-    
-    nanjbtc : {
-        key: 'nanjbtc',
-        baseAsset: KunaAssetUnit.NanjCoin,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
-    }
 };

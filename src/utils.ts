@@ -1,3 +1,5 @@
+import { KunaTicker, KunaOrder, KunaTrade } from './types';
+
 export const mapTicker = (marketSymbol: string, tickerResponse: any): KunaTicker => {
     return {
         market: marketSymbol,
@@ -5,7 +7,7 @@ export const mapTicker = (marketSymbol: string, tickerResponse: any): KunaTicker
     };
 };
 
-export const mapTrade = (value: object): Trade => {
+export const mapTrade = (value: object): KunaTrade => {
     return {
         id: +value['id'],
         price: +value['price'],
@@ -17,7 +19,7 @@ export const mapTrade = (value: object): Trade => {
     };
 };
 
-export const mapOrder = (value: object): Order => {
+export const mapOrder = (value: object): KunaOrder => {
     return {
         id: +value["id"],
         side: value["side"],
