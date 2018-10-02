@@ -1,6 +1,6 @@
 <p align="center">
   <h3 align="center">Javascript Library that support Kuna.io cryptocurrency exchange</h3>
-
+  
   <p align="center">
     <br/>
     <br/>
@@ -9,3 +9,6 @@
 </p>
 
 <hr />
+
+[![NPM Version](https://img.shields.io/npm/v/kuna-sdk.svg?style=flat)](https://www.npmjs.com/package/kuna-sdk)
+[![NPM Downloads](https://img.shields.io/npm/dm/kuna-sdk.svg?style=flat)](https://www.npmjs.com/package/kuna-sdk)
