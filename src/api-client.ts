@@ -62,7 +62,12 @@ export class KunaApiClient {
         const {data}: AxiosResponse = await this.axiosClient.get(`/depth?market=${market}`);
 
         this.debug('getOrderBook(${market)=', data);
-
+        
+        //kuna returns asks prices in descending order, that is not expected and different from binance response
+        data.asks.sort(function (a, b) {
+            if (+a[0] === +b[0]) return 0;
+            else return (+a[0] < +b[0]) ? -1 : 1;
+        })
         return data;
     }
 
@@ -167,7 +172,7 @@ export class KunaApiClient {
         const assortedParams = chain(params).toPairs().sortBy(0).fromPairs().value();
 
         const queryString = `${httpVerb}|${u.pathname}|${qs.stringify(assortedParams)}`;
-
+        
         return crypto.createHmac('sha256', this.secretKey)
             .update(queryString)
             .digest('hex');

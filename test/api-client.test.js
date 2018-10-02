@@ -75,6 +75,9 @@ describe('api-client.test.js', function () {
             assert.equal("timestamp" in response, true);
             assert.equal("bids" in response, true);
             assert.equal("asks" in response, true);
+            //we need to verify that asks in ascending order
+            expect(+response["asks"][0][0]).toBeLessThan(+response["asks"][1][0]);
+            expect(+response["bids"][0][0]).toBeGreaterThan(+response["bids"][1][0]);
             done();
           })
           .catch(function (error) {
@@ -155,18 +158,17 @@ describe('api-client.test.js', function () {
                 assert.equal(typeof response, "object");
                 expect(response2.length).toBeGreaterThan(0);
                 // console.log("user orders=", response);
+                kuna.cancelOrder(response.id).then(function (response2) {
+                    expect(response2.id).toBeGreaterThan(0);
+                  })
+                  .catch(function (error) {
+                    done(error);
+                    console.log(error.response.data);
+                  });
               })
               .catch(function (error) {
                 console.log(error.response.data);
                 done(error);
-              });
-
-            kuna.cancelOrder(response.id).then(function (response2) {
-                expect(response2.id).toBeGreaterThan(0);
-              })
-              .catch(function (error) {
-                done(error);
-                console.log(error.response.data);
               });
           })
           .catch(function (error) {
