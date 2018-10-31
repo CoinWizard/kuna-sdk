@@ -38,7 +38,7 @@ export enum AssetColor {
 
     KunaToken = '#2468E4',
 
-    UkrainianHryvnia = '#FFDA44 ',
+    UkrainianHryvnia = '#FFDA44',
     USDollar = '#00A275',
     Euro = '#135180',
 }
