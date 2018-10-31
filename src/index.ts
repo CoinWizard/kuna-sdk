@@ -2,6 +2,7 @@ export { KunaTicker, KunaOrder, KunaOrderBook, KunaTrade, KunaUserAccount, KunaU
 export { AssetColor } from './colors';
 export { KunaAssetUnit, KunaAsset, kunaAssets, getAsset } from './asset';
 export { KunaMarket, kunaMarketMap } from './markets';
+
 import { KunaApiClient } from './api-client';
 
 export { KunaApiClient };

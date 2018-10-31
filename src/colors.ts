@@ -1,6 +1,6 @@
 export enum AssetColor {
 
-    Default = '#555555',
+    Default = '#0D0D3F',
 
     Bitcoin = '#F7931A',
     Ethereum = '#434348',
@@ -15,7 +15,7 @@ export enum AssetColor {
     GolosGold = '#DAB236',
 
     RussianMinerCoin = '#D21F26',
-    Revain = '#BD2DF5',
+    Revain = '#8A004E',
     Aeron = '#135180',
     Karbo = '#2768AA',
     Remme = '#6526DD',
@@ -36,9 +36,9 @@ export enum AssetColor {
     TrueUSD = '#00A275',
     StasisEuro = '#2468E4',
 
-    KunaToken = '#2E71F0',
+    KunaToken = '#2468E4',
 
-    UkrainianHryvnia = '#D8C566',
+    UkrainianHryvnia = '#FFDA44 ',
     USDollar = '#00A275',
     Euro = '#135180',
 }
