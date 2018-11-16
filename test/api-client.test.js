@@ -4,7 +4,6 @@ const expect = require('expect');
 const Kuna = require('../lib/api-client');
 const Markets = require('../lib/markets').kunaMarketMap;
 const _ = require('lodash');
-const url = require('url');
 
 describe('api-client.test.js', function () {
   const badurl = "https://kuna.io.2/api/v2";

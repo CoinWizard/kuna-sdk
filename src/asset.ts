@@ -6,6 +6,8 @@ export enum KunaAssetUnit {
     Dash = 'DASH',
     Litecoin = 'LTC',
     BitcoinCash = 'BCH',
+    BitcoinCashSV = 'BSV',
+    BitcoinCashABC = 'BAB',
     Ripple = 'XRP',
 
     Waves = 'WAVES',
@@ -17,6 +19,7 @@ export enum KunaAssetUnit {
     Aeron = 'ARN',
     Karbo = 'KRB',
     Remme = 'REM',
+    CSNP = 'CSNP',
     Nem = 'XEM',
     Everus = 'EVR',
     ERC20 = 'ERC20',
@@ -84,6 +87,18 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         name: 'Kun',
         color: AssetColor.KunaToken,
         format: '0,0',
+    },
+    [KunaAssetUnit.BitcoinCashSV]: {
+        key: KunaAssetUnit.BitcoinCashSV,
+        name: 'Bitcoin Cash SV',
+        color: AssetColor.BitcoinCashSV,
+        format: '0,0.[00000000]',
+    },
+    [KunaAssetUnit.BitcoinCashABC]: {
+        key: KunaAssetUnit.BitcoinCashABC,
+        name: 'Bitcoin Cash ABC',
+        color: AssetColor.BitcoinCashABC,
+        format: '0,0.[00000000]',
     },
     [KunaAssetUnit.BitcoinCash]: {
         key: KunaAssetUnit.BitcoinCash,
@@ -227,7 +242,14 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         key: KunaAssetUnit.NanjCoin,
         name: 'Nanjcoin',
         color: AssetColor.NanjCoin,
-        format: '0,0.[00]',
+        format: '0,0.[00000000]',
+    },
+
+    [KunaAssetUnit.CSNP]: {
+        key: KunaAssetUnit.CSNP,
+        name: 'CSNP',
+        color: AssetColor.Default,
+        format: '0,0.[00000000]',
     },
 };
 

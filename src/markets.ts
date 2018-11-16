@@ -6,6 +6,7 @@ export type KunaMarket = {
     quoteAsset: KunaAssetUnit;
     format: string;
     compareTo?: string;
+    disabled?: boolean;
 };
 
 export const kunaMarketMap: Record<string, KunaMarket> = {
@@ -152,7 +153,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         key: 'nanjbtc',
         baseAsset: KunaAssetUnit.NanjCoin,
         quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
+        format: '0,0.[00000000]',
     },
     rmcbtc: {
         key: 'rmcbtc',
@@ -208,4 +209,12 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.Ethereum,
         format: '0,0.[00000000]',
     },
+
+    csnpbtc: {
+        key: 'csnpbtc',
+        baseAsset: KunaAssetUnit.Remme,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[00000000]',
+        disabled: true,
+    }
 };

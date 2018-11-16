@@ -8,6 +8,8 @@ export enum AssetColor {
     Litecoin = '#CBC6C6',
 
     BitcoinCash = '#F7931A',
+    BitcoinCashSV = '#EAB302',
+    BitcoinCashABC = '#F49D18',
     Ripple = '#222222',
 
     Waves = '#0056FF',
