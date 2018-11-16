@@ -23,7 +23,7 @@ export enum AssetColor {
     Remme = '#6526DD',
     Nem = '#00A275',
     Everus = '#35BEB4',
-    ERC20 = '#FCEB22',
+    ERC20 = '#353333',
     Venus = '#111111',
     EOS = '#262223',
     B2bx = '#00A275',

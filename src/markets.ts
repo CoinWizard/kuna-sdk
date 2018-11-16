@@ -179,6 +179,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[00000]',
     },
+    csnpbtc: {
+        key: 'csnpbtc',
+        baseAsset: KunaAssetUnit.CSNP,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[00000000]',
+        disabled: true,
+    },
 
     /**
      * to Stasis Euro
@@ -209,12 +216,4 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.Ethereum,
         format: '0,0.[00000000]',
     },
-
-    csnpbtc: {
-        key: 'csnpbtc',
-        baseAsset: KunaAssetUnit.Remme,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[00000000]',
-        disabled: true,
-    }
 };
