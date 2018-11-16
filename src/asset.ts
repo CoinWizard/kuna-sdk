@@ -247,8 +247,8 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
 
     [KunaAssetUnit.CSNP]: {
         key: KunaAssetUnit.CSNP,
-        name: 'CSNP',
-        color: AssetColor.Default,
+        name: 'Crowdsale Network',
+        color: AssetColor.CSNP,
         format: '0,0.[00000000]',
     },
 };

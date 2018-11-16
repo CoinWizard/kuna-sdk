@@ -32,6 +32,7 @@ export enum AssetColor {
     Hacken = '#31A4B2',
     NanjCoin = '#0970b3',
     ZCash = '#222',
+    CSNP = '#BEA74D',
     Stellar = '#566871',
 
     Tether = '#00A275',
@@ -43,4 +44,5 @@ export enum AssetColor {
     UkrainianHryvnia = '#FFDA44',
     USDollar = '#00A275',
     Euro = '#135180',
+
 }
