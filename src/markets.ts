@@ -6,6 +6,7 @@ export type KunaMarket = {
     quoteAsset: KunaAssetUnit;
     format: string;
     compareTo?: string;
+    decimal: number;
     disabled?: boolean;
 };
 
@@ -18,6 +19,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Bitcoin,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
         compareTo: 'btcusd',
     },
     ethuah: {
@@ -25,6 +27,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Ethereum,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
         compareTo: 'ethusd',
     },
     dashuah: {
@@ -32,6 +35,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Dash,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
         compareTo: 'dshusd',
     },
     xrpuah: {
@@ -39,6 +43,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Ripple,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
         compareTo: 'xrpusd',
     },
     ltcuah: {
@@ -46,6 +51,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Litecoin,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
         compareTo: 'ltcusd',
     },
     eosuah: {
@@ -53,6 +59,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.EOS,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
         compareTo: 'eosusd',
     },
     krbuah: {
@@ -60,60 +67,70 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Karbo,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     xemuah: {
         key: 'xemuah',
         baseAsset: KunaAssetUnit.Nem,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     remuah: {
         key: 'remuah',
         baseAsset: KunaAssetUnit.Remme,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     wavesuah: {
         key: 'wavesuah',
         baseAsset: KunaAssetUnit.Waves,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     zecuah: {
         key: 'zecuah',
         baseAsset: KunaAssetUnit.ZCash,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     bchuah: {
         key: 'bchuah',
         baseAsset: KunaAssetUnit.BitcoinCash,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     gbguah: {
         key: 'gbguah',
         baseAsset: KunaAssetUnit.GolosGold,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     xlmuah: {
         key: 'xlmuah',
         baseAsset: KunaAssetUnit.Stellar,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
-        format: '0,0.[000000]',
+        format: '0,0.[0000]',
+        decimal: 4,
     },
     tusduah: {
         key: 'tusduah',
         baseAsset: KunaAssetUnit.TrueUSD,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
+        decimal: 2,
     },
     eursuah: {
         key: 'eursuah',
         baseAsset: KunaAssetUnit.StasisEuro,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[0000]',
+        decimal: 4,
     },
 
     /**
@@ -124,66 +141,77 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Ethereum,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[0000]',
+        decimal: 4,
     },
     eosbtc: {
         key: 'eosbtc',
         baseAsset: KunaAssetUnit.EOS,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
+        decimal: 6,
     },
     kunbtc: {
         key: 'kunbtc',
         baseAsset: KunaAssetUnit.KunaToken,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
+        decimal: 6,
     },
     bchbtc: {
         key: 'bchbtc',
         baseAsset: KunaAssetUnit.BitcoinCash,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
+        decimal: 6,
     },
     hknbtc: {
         key: 'hknbtc',
         baseAsset: KunaAssetUnit.Hacken,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
+        decimal: 6,
     },
     nanjbtc : {
         key: 'nanjbtc',
         baseAsset: KunaAssetUnit.NanjCoin,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[00000000]',
+        decimal: 6,
     },
     rmcbtc: {
         key: 'rmcbtc',
         baseAsset: KunaAssetUnit.RussianMinerCoin,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
+        decimal: 6,
     },
     rbtc: {
         key: 'rbtc',
         baseAsset: KunaAssetUnit.Revain,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
+        decimal: 6,
     },
     arnbtc: {
         key: 'arnbtc',
         baseAsset: KunaAssetUnit.Aeron,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
+        decimal: 6,
     },
     erc20btc: {
         key: 'erc20btc',
         baseAsset: KunaAssetUnit.ERC20,
         quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[00000]',
+        format: '0,0.[000000]',
+        decimal: 6,
     },
     csnpbtc: {
         key: 'csnpbtc',
         baseAsset: KunaAssetUnit.CSNP,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[00000000]',
+        decimal: 8,
         disabled: true,
     },
 
@@ -195,6 +223,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Bitcoin,
         quoteAsset: KunaAssetUnit.StasisEuro,
         format: '0,0.[000000]',
+        decimal: 6,
     },
 
     /**
@@ -205,6 +234,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Golos,
         quoteAsset: KunaAssetUnit.GolosGold,
         format: '0,0.[0000]',
+        decimal: 4,
     },
 
     /**
@@ -215,5 +245,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         baseAsset: KunaAssetUnit.Remme,
         quoteAsset: KunaAssetUnit.Ethereum,
         format: '0,0.[00000000]',
+        decimal: 8,
     },
 };
