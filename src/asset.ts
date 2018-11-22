@@ -29,7 +29,6 @@ export enum KunaAssetUnit {
     FoodCoin = 'FOOD',
     Octanox = 'OTX',
     Hacken = 'HKN',
-    NanjCoin = 'NANJ',
     ZCash = 'ZEC',
     Stellar = 'XLM',
 
@@ -42,6 +41,10 @@ export enum KunaAssetUnit {
     UkrainianHryvnia = 'UAH',
     USDollar = 'USD',
     Euro = 'EUR',
+
+
+    /** @deprecated */
+    NanjCoin = 'NANJ',
 }
 
 export type KunaAsset = {
@@ -247,9 +250,9 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
 
     [KunaAssetUnit.CSNP]: {
         key: KunaAssetUnit.CSNP,
-        name: 'Crowdsale Network',
+        name: 'Crowdsale Net',
         color: AssetColor.CSNP,
-        format: '0,0.[00000000]',
+        format: '0,0.[000000]',
     },
 };
 

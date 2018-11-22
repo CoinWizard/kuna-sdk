@@ -171,13 +171,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[000000]',
         decimal: 6,
     },
-    nanjbtc : {
-        key: 'nanjbtc',
-        baseAsset: KunaAssetUnit.NanjCoin,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[00000000]',
-        decimal: 6,
-    },
     rmcbtc: {
         key: 'rmcbtc',
         baseAsset: KunaAssetUnit.RussianMinerCoin,
@@ -210,7 +203,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         key: 'csnpbtc',
         baseAsset: KunaAssetUnit.CSNP,
         quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[00000000]',
+        format: '0,0.[000000]',
         decimal: 8,
         disabled: true,
     },
