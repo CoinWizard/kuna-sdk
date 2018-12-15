@@ -171,13 +171,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[000000]',
         decimal: 6,
     },
-    rmcbtc: {
-        key: 'rmcbtc',
-        baseAsset: KunaAssetUnit.RussianMinerCoin,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
-        decimal: 6,
-    },
     rbtc: {
         key: 'rbtc',
         baseAsset: KunaAssetUnit.Revain,

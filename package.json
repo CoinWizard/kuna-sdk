@@ -1,11 +1,13 @@
 {
     "name": "kuna-sdk",
-    "version": "0.3.9",
-    "description": "NodeJS SDK for Kuna exchange for API v2",
+    "version": "0.3.10",
+    "description": "NodeJS SDK for Kuna exchange for API v2 and v3",
     "keywords": [
         "kuna.io",
         "cryptocurrency",
-        "exchange api"
+        "exchange api",
+        "kuna api v3",
+        "kuna api v2"
     ],
     "scripts": {
         "build": "rm -rf ./lib && tsc --esModuleInterop",
