@@ -11,3 +11,11 @@ export type KunaV3Ticker = {
     high: number;
     low: number;
 }
+
+
+export type KunaV3Order = [number, number, number];
+
+export type KunaV3OrderBook = {
+    ask: KunaV3Order[];
+    bid: KunaV3Order[];
+};

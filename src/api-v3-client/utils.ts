@@ -1,4 +1,4 @@
-import { KunaV3Ticker } from './types';
+import { KunaV3Order, KunaV3OrderBook, KunaV3Ticker } from './types';
 
 export function mapTicker(data: Array<any>): KunaV3Ticker {
     return {
@@ -14,4 +14,21 @@ export function mapTicker(data: Array<any>): KunaV3Ticker {
         high: data[9],
         low: data[10],
     };
+}
+
+export function mapOrderBook(data: Array<KunaV3Order>): KunaV3OrderBook {
+    const book = {
+        bid: [],
+        ask: [],
+    };
+
+    data.forEach((order: KunaV3Order) => {
+        if (order[1] > 0) {
+            book.bid.push(order);
+        } else {
+            book.ask.push(order);
+        }
+    });
+
+    return book;
 }

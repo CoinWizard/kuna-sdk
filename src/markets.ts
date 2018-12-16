@@ -4,9 +4,11 @@ export type KunaMarket = {
     key: string;
     baseAsset: KunaAssetUnit;
     quoteAsset: KunaAssetUnit;
+    /** @deprecated */
     format: string;
-    compareTo?: string;
     decimal: number;
+
+    compareTo?: string;
     disabled?: boolean;
 };
 
@@ -132,6 +134,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[0000]',
         decimal: 4,
     },
+    ausduah: {
+        key: 'ausduah',
+        baseAsset: KunaAssetUnit.AdvancedUSD,
+        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
 
     /**
      * to Bitcoin
@@ -198,7 +207,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
         decimal: 8,
-        disabled: true,
     },
 
     /**
@@ -233,4 +241,44 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00000000]',
         decimal: 8,
     },
+
+
+    /**
+     * Advanced USD
+     */
+    btcausd: {
+        key: 'btcausd',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.AdvancedUSD,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
+
+    /**
+     * Advanced RUB
+     */
+    btcarub: {
+        key: 'btcarub',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.AdvancedRUB,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
+
+    ausdarub: {
+        key: 'ausdarub',
+        baseAsset: KunaAssetUnit.AdvancedUSD,
+        quoteAsset: KunaAssetUnit.AdvancedRUB,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
+
+    uaharub: {
+        key: 'uaharub',
+        baseAsset: KunaAssetUnit.UkrainianHryvnia,
+        quoteAsset: KunaAssetUnit.AdvancedRUB,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
+
 };

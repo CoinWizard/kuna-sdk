@@ -13,8 +13,6 @@ export enum KunaAssetUnit {
     Waves = 'WAVES',
     Golos = 'GOL',
     GolosGold = 'GBG',
-
-    RussianMinerCoin = 'RMC',
     Revain = 'R',
     Aeron = 'ARN',
     Karbo = 'KRB',
@@ -23,7 +21,7 @@ export enum KunaAssetUnit {
     Nem = 'XEM',
     Everus = 'EVR',
     ERC20 = 'ERC20',
-    Venus = 'VENUS',
+
     EOS = 'EOS',
     B2bx = 'B2B',
     FoodCoin = 'FOOD',
@@ -32,6 +30,8 @@ export enum KunaAssetUnit {
     ZCash = 'ZEC',
     Stellar = 'XLM',
 
+    AdvancedUSD = 'AUSD',
+    AdvancedRUB = 'ARUB',
     TrueUSD = 'TUSD',
     Tether = 'USDT',
     StasisEuro = 'EURS',
@@ -45,6 +45,8 @@ export enum KunaAssetUnit {
 
     /** @deprecated */
     NanjCoin = 'NANJ',
+    RussianMinerCoin = 'RMC',
+    Venus = 'VENUS',
 }
 
 export type KunaAsset = {
@@ -127,12 +129,6 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         color: AssetColor.Golos,
         format: '0,0.[0000]',
     },
-    [KunaAssetUnit.RussianMinerCoin]: {
-        key: KunaAssetUnit.RussianMinerCoin,
-        name: 'Russian Miner Coin',
-        color: AssetColor.RussianMinerCoin,
-        format: '0,0.[00]',
-    },
     [KunaAssetUnit.Revain]: {
         key: KunaAssetUnit.Revain,
         name: 'Revain',
@@ -205,12 +201,6 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         color: AssetColor.ZCash,
         format: '0,0.[0000]',
     },
-    [KunaAssetUnit.Venus]: {
-        key: KunaAssetUnit.Venus,
-        name: 'Venus',
-        color: AssetColor.Venus,
-        format: '0,0.[0000]',
-    },
     [KunaAssetUnit.ERC20]: {
         key: KunaAssetUnit.ERC20,
         name: 'ERC20',
@@ -241,18 +231,46 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         color: AssetColor.StasisEuro,
         format: '0,0.[00]',
     },
+    [KunaAssetUnit.CSNP]: {
+        key: KunaAssetUnit.CSNP,
+        name: 'Crowdsale Net',
+        color: AssetColor.CSNP,
+        format: '0,0.[000000]',
+    },
+    [KunaAssetUnit.AdvancedUSD]: {
+        key: KunaAssetUnit.AdvancedUSD,
+        name: 'Advanced USD',
+        color: AssetColor.AdvancedUSD,
+        format: '0,0.[00]',
+    },
+    [KunaAssetUnit.AdvancedRUB]: {
+        key: KunaAssetUnit.AdvancedRUB,
+        name: 'Advanced RUB',
+        color: AssetColor.AdvancedRUB,
+        format: '0,0.[00]',
+    },
+
+
+    /**
+     * @deprecated
+     */
+    [KunaAssetUnit.Venus]: {
+        key: KunaAssetUnit.Venus,
+        name: 'Venus',
+        color: AssetColor.Venus,
+        format: '0,0.[0000]',
+    },
     [KunaAssetUnit.NanjCoin]: {
         key: KunaAssetUnit.NanjCoin,
         name: 'Nanjcoin',
         color: AssetColor.NanjCoin,
         format: '0,0.[00000000]',
     },
-
-    [KunaAssetUnit.CSNP]: {
-        key: KunaAssetUnit.CSNP,
-        name: 'Crowdsale Net',
-        color: AssetColor.CSNP,
-        format: '0,0.[000000]',
+    [KunaAssetUnit.RussianMinerCoin]: {
+        key: KunaAssetUnit.RussianMinerCoin,
+        name: 'Russian Miner Coin',
+        color: AssetColor.RussianMinerCoin,
+        format: '0,0.[00]',
     },
 };
 

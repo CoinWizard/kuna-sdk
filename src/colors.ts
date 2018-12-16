@@ -16,7 +16,6 @@ export enum AssetColor {
     Golos = '#2768AA',
     GolosGold = '#DAB236',
 
-    RussianMinerCoin = '#D21F26',
     Revain = '#8A004E',
     Aeron = '#135180',
     Karbo = '#2768AA',
@@ -24,7 +23,6 @@ export enum AssetColor {
     Nem = '#00A275',
     Everus = '#35BEB4',
     ERC20 = '#353333',
-    Venus = '#111111',
     EOS = '#262223',
     B2bx = '#00A275',
     FoodCoin = '#DA760F',
@@ -35,6 +33,8 @@ export enum AssetColor {
     CSNP = '#BEA74D',
     Stellar = '#566871',
 
+    AdvancedUSD = '#02BC62',
+    AdvancedRUB = '#02BC62',
     Tether = '#00A275',
     TrueUSD = '#00A275',
     StasisEuro = '#2468E4',
@@ -45,4 +45,8 @@ export enum AssetColor {
     USDollar = '#00A275',
     Euro = '#135180',
 
+
+
+    RussianMinerCoin = '#D21F26',
+    Venus = '#111111',
 }
