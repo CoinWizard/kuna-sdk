@@ -9,7 +9,7 @@ export function mapTicker(data: Array<any>): KunaV3Ticker {
         askSize: data[4],
         dailyChange: data[5],
         dailyChangePercent: data[6],
-        last: data[7],
+        lastPrice: data[7],
         volume: data[8],
         high: data[9],
         low: data[10],
