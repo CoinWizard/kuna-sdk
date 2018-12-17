@@ -26,6 +26,7 @@ export function mapOrderBook(data: Array<KunaV3Order>): KunaV3OrderBook {
         if (order[1] > 0) {
             book.bid.push(order);
         } else {
+            order[1] = -order[1];
             book.ask.push(order);
         }
     });
