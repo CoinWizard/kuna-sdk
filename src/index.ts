@@ -5,5 +5,5 @@ export { KunaMarket, kunaMarketMap } from './markets';
 import { KunaApiClient } from './api-client';
 import KunaApiV3Client, { KunaV3Ticker, KunaV3OrderBook, KunaV3Order } from './api-v3-client';
 
-export { KunaApiClient, KunaApiV3Client, KunaV3Ticker };
+export { KunaApiClient, KunaApiV3Client, KunaV3Ticker, KunaV3OrderBook, KunaV3Order };
 export const kunaApiClient: KunaApiClient = new KunaApiClient();

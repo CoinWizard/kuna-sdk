@@ -18,9 +18,16 @@ export default class KunaApiV3Client {
     }
 
 
+    public async status(): Promise<any> {
+        const response = await this.client.get('/status');
+
+        return response.data;
+    }
+
+
     public async getTicker(symbol: string): Promise<KunaV3Ticker> {
         const response = await this.client.get('/tickers', {
-            params: {symbols: symbol},
+            params: { symbols: symbol },
         });
 
         return mapTicker(head(response.data));
@@ -31,9 +38,7 @@ export default class KunaApiV3Client {
         const requestSymbols = symbols ? symbols.join(',') : 'ALL';
 
         const response = await this.client.get('/tickers', {
-            params: {
-                symbols: requestSymbols,
-            },
+            params: { symbols: requestSymbols },
         });
 
         return response.data.map(mapTicker);
