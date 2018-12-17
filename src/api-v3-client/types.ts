@@ -6,7 +6,7 @@ export type KunaV3Ticker = {
     askSize: number;
     dailyChange: number;
     dailyChangePercent: number;
-    lastPrice: number;
+    last: number;
     volume: number;
     high: number;
     low: number;
