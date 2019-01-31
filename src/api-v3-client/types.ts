@@ -12,6 +12,10 @@ export type KunaV3Ticker = {
     low: number;
 }
 
+export type KunaV3LastTrade = {
+
+};
+
 
 export type KunaV3Order = [number, number, number];
 

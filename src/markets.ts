@@ -120,6 +120,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[0000]',
         decimal: 4,
     },
+    usdtuah: {
+        key: 'usdtuah',
+        baseAsset: KunaAssetUnit.Tether,
+        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
     tusduah: {
         key: 'tusduah',
         baseAsset: KunaAssetUnit.TrueUSD,
@@ -141,6 +148,28 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
+
+
+    /**
+     * to Tether
+     */
+    btcusdt: {
+        key: 'btcusdt',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.Tether,
+        format: '0,0.[00]',
+        decimal: 2,
+        compareTo: 'btcusd',
+    },
+    ethusdt: {
+        key: 'ethusdt',
+        baseAsset: KunaAssetUnit.Ethereum,
+        quoteAsset: KunaAssetUnit.Tether,
+        format: '0,0.[00]',
+        decimal: 2,
+        compareTo: 'ethusd',
+    },
+
 
     /**
      * to Bitcoin
@@ -209,6 +238,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         decimal: 8,
     },
 
+
     /**
      * to Stasis Euro
      */
@@ -220,6 +250,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         decimal: 6,
     },
 
+
     /**
      * to Golos Gold
      */
@@ -230,6 +261,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[0000]',
         decimal: 4,
     },
+
 
     /**
      * to Ethereum
@@ -253,6 +285,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
+
 
     /**
      * Advanced RUB
