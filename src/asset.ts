@@ -249,6 +249,12 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         color: AssetColor.AdvancedRUB,
         format: '0,0.[00]',
     },
+    [KunaAssetUnit.Tether]: {
+        key: KunaAssetUnit.Tether,
+        name: 'Tether',
+        color: AssetColor.Tether,
+        format: '0,0.[00]',
+    },
 
 
     /**
