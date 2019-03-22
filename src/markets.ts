@@ -24,6 +24,14 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         decimal: 2,
         compareTo: 'btcusd',
     },
+    btcusd: {
+        key: 'btcusd',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.USDollar,
+        format: '0,0.[00]',
+        decimal: 2,
+        compareTo: 'btcusd',
+    },
     ethuah: {
         key: 'ethuah',
         baseAsset: KunaAssetUnit.Ethereum,
