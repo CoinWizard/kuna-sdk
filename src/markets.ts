@@ -94,6 +94,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
+    goluah: {
+        key: 'goluah',
+        baseAsset: KunaAssetUnit.Golos,
+        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
     wavesuah: {
         key: 'wavesuah',
         baseAsset: KunaAssetUnit.Waves,
