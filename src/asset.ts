@@ -36,6 +36,7 @@ export enum KunaAssetUnit {
 
     UkrainianHryvnia = 'UAH',
     USDollar = 'USD',
+    RussianRuble = 'RUB',
     Euro = 'EUR',
 
 
@@ -231,6 +232,12 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         key: KunaAssetUnit.USDollar,
         name: 'U.S. Dollar',
         color: AssetColor.USDollar,
+        format: '0,0.[00]',
+    },
+    [KunaAssetUnit.RussianRuble]: {
+        key: KunaAssetUnit.RussianRuble,
+        name: 'Russian Ruble',
+        color: AssetColor.RussianRuble,
         format: '0,0.[00]',
     },
     [KunaAssetUnit.Euro]: {

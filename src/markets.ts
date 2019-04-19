@@ -24,6 +24,7 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         decimal: 2,
         compareTo: 'btcusd',
     },
+
     btcusd: {
         key: 'btcusd',
         baseAsset: KunaAssetUnit.Bitcoin,
@@ -31,6 +32,14 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
         compareTo: 'btcusd',
+    },
+
+    btcrub: {
+        key: 'btcrub',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.RussianRuble,
+        format: '0,0.[00]',
+        decimal: 2,
     },
 
     ethuah: {
@@ -282,20 +291,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
     },
 
     /**
-     * Advanced RUB
+     * RUB
      */
-    btcarub: {
-        key: 'btcarub',
-        baseAsset: KunaAssetUnit.Bitcoin,
-        quoteAsset: KunaAssetUnit.AdvancedRUB,
-        format: '0,0.[00]',
-        decimal: 2,
-    },
 
-    uaharub: {
-        key: 'uaharub',
-        baseAsset: KunaAssetUnit.UkrainianHryvnia,
-        quoteAsset: KunaAssetUnit.AdvancedRUB,
+    usdtrub: {
+        key: 'usdtrub',
+        baseAsset: KunaAssetUnit.Tether,
+        quoteAsset: KunaAssetUnit.RussianRuble,
         format: '0,0.[00]',
         decimal: 2,
     },
