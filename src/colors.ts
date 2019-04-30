@@ -3,7 +3,7 @@ export enum AssetColor {
     Default = '#0D0D3F',
 
     Bitcoin = '#F7931A',
-    Ethereum = '#434348',
+    Ethereum = '#343438',
     Dash = '#008DE4',
     Litecoin = '#CBC6C6',
 
@@ -40,6 +40,7 @@ export enum AssetColor {
     StasisEuro = '#2468E4',
 
     KunaToken = '#2468E4',
+    BinanceCoin = '#F4BA2E',
 
     RussianMinerCoin = '#D21F26',
     Venus = '#111111',
