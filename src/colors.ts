@@ -16,6 +16,7 @@ export enum AssetColor {
     Golos = '#2768AA',
     GolosGold = '#DAB236',
     DreamTeam = '#CC9015',
+    DreamTeamBackground = '#F6D935',
     Revain = '#8A004E',
     Aeron = '#135180',
     Karbo = '#2768AA',

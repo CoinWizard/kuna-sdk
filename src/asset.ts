@@ -165,7 +165,7 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         key: KunaAssetUnit.DreamTeam,
         name: 'DreamTeam',
         color: AssetColor.DreamTeam,
-        backgroundColor: '#F6D935',
+        backgroundColor: AssetColor.DreamTeamBackground,
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Golos]: {
