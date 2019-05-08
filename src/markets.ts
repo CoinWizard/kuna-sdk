@@ -49,7 +49,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
-
     bnbuah: {
         key: 'bnbuah',
         baseAsset: KunaAssetUnit.BinanceCoin,
@@ -57,15 +56,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
-
-    bnbbtc: {
-        key: 'bnbbtc',
-        baseAsset: KunaAssetUnit.BinanceCoin,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[0000]',
-        decimal: 4,
-    },
-
     ethuah: {
         key: 'ethuah',
         baseAsset: KunaAssetUnit.Ethereum,
@@ -81,6 +71,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
         compareTo: 'dshusd',
+    },
+    dreamuah: {
+        key: 'dreamuah',
+        baseAsset: KunaAssetUnit.DreamTeam,
+        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
+        format: '0,0.[00]',
+        decimal: 2,
     },
     xrpuah: {
         key: 'xrpuah',
@@ -215,6 +212,20 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
     /**
      * to Bitcoin
      */
+    kunbtc: {
+        key: 'kunbtc',
+        baseAsset: KunaAssetUnit.KunaToken,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[000000]',
+        decimal: 6,
+    },
+    bnbbtc: {
+        key: 'bnbbtc',
+        baseAsset: KunaAssetUnit.BinanceCoin,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[0000]',
+        decimal: 4,
+    },
     ethbtc: {
         key: 'ethbtc',
         baseAsset: KunaAssetUnit.Ethereum,
@@ -222,16 +233,16 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[0000]',
         decimal: 4,
     },
-    eosbtc: {
-        key: 'eosbtc',
-        baseAsset: KunaAssetUnit.EOS,
+    dreambtc: {
+        key: 'dreambtc',
+        baseAsset: KunaAssetUnit.DreamTeam,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
         decimal: 6,
     },
-    kunbtc: {
-        key: 'kunbtc',
-        baseAsset: KunaAssetUnit.KunaToken,
+    eosbtc: {
+        key: 'eosbtc',
+        baseAsset: KunaAssetUnit.EOS,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
         decimal: 6,

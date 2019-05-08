@@ -9,6 +9,8 @@ export enum KunaAssetUnit {
     Stellar = 'XLM',
     EOS = 'EOS',
 
+    DreamTeam = 'DREAM',
+
     EthereumClassic = 'ETC',
 
     BitcoinCash = 'BCH',
@@ -157,6 +159,13 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         name: 'Waves',
         color: AssetColor.Waves,
         backgroundColor: '#FFF',
+        format: '0,0.[0000]',
+    },
+    [KunaAssetUnit.DreamTeam]: {
+        key: KunaAssetUnit.DreamTeam,
+        name: 'DreamTeam',
+        color: AssetColor.DreamTeam,
+        backgroundColor: '#F6D935',
         format: '0,0.[0000]',
     },
     [KunaAssetUnit.Golos]: {
