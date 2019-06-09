@@ -58,12 +58,12 @@ export default class KunaApiV3Client {
             update(signatureString).
             digest('hex');
 
-        console.log({
-            path: path,
-            data: data,
-            signature: signature,
-            nonce: nonce,
-        });
+        // console.log({
+        //     path: path,
+        //     data: data,
+        //     signature: signature,
+        //     nonce: nonce,
+        // });
 
         const response = await this.client.request({
             url: path,
@@ -76,7 +76,7 @@ export default class KunaApiV3Client {
             },
         });
 
-        console.log(response.data);
+        // console.log(response.data);
 
         return response.data;
     }
