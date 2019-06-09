@@ -11,6 +11,7 @@ import {
     KunaV3Currency,
     KunaV3LandingPageStatistic,
     KunaV3Market,
+    KunaV3LastTrade,
     KunaAPIToken,
 } from './types';
 
@@ -99,6 +100,13 @@ export default class KunaApiV3Client {
 
         return mapOrderBook(response.data);
     }
+
+    public async getLastTrades(symbol: string): Promise<KunaV3LastTrade> {
+        const response = await this.client.get(`/trades/${symbol}`);
+
+        return response.data;
+    }
+
 
     public async checkKunaCode(code: string): Promise<any> {
         const response = await this.client.get(`/v3/kuna_codes/${code}/check`);

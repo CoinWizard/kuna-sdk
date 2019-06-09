@@ -12,6 +12,11 @@ export type KunaV3Ticker = {
     low: number;
 }
 
+export type KunaV3LastTrade = {
+
+};
+
+
 export type KunaV3Order = [number, number, number];
 
 export type KunaV3OrderBook = {
@@ -25,6 +30,7 @@ export type KunaV3ExchangeRate = {
     uah: number;
     usd: number;
 };
+
 
 export type KunaV3Currency = {
     id: number;
@@ -43,6 +49,7 @@ export type KunaV3Currency = {
     precision: { real: number; trade: number; };
     sort_order: number;
 };
+
 
 export type KunaV3LandingPageStatistic = {
     day_usd_sum: number;
