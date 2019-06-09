@@ -216,8 +216,22 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         key: 'btceurs',
         baseAsset: KunaAssetUnit.Bitcoin,
         quoteAsset: KunaAssetUnit.StasisEuro,
-        format: '0,0.[000000]',
-        decimal: 6,
+        format: '0,0.[0000]',
+        decimal: 4,
+    },
+    btcusdt: {
+        key: 'btcusdt',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.Tether,
+        format: '0,0.[0000]',
+        decimal: 4,
+    },
+    btcusd: {
+        key: 'btcusd',
+        baseAsset: KunaAssetUnit.Bitcoin,
+        quoteAsset: KunaAssetUnit.USDollar,
+        format: '0,0.[0000]',
+        decimal: 4,
     },
 
     /**
@@ -227,6 +241,14 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         key: 'golgbg',
         baseAsset: KunaAssetUnit.Golos,
         quoteAsset: KunaAssetUnit.GolosGold,
+        format: '0,0.[0000]',
+        decimal: 4,
+    },
+
+    golbtc: {
+        key: 'golbtc',
+        baseAsset: KunaAssetUnit.Golos,
+        quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[0000]',
         decimal: 4,
     },

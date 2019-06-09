@@ -20,7 +20,7 @@
     "homepage": "https://kuna.io",
     "author": "CoinWizard Team <info@coinwizard.me>",
     "license": "LGPL-3.0",
-    "main": "lib/index.js",
+    "main": "./index.js",
     "types": "lib/index.d.ts",
     "dependencies": {
         "axios": "0.18.0",

@@ -1,18 +1,18 @@
 const assert = require('assert');
 const expect = require('expect');
 
-const Kuna = require('../lib/api-client');
+const Kuna = require('../');
 const Markets = require('../lib/markets').kunaMarketMap;
 const _ = require('lodash');
 
-describe('api-client.test.js', function () {
-  const badurl = "https://kuna.io.2/api/v2";
-  describe('constructor with bad url ' + badurl,
+describe('Kuna API v2 Client', function () {
+  const badUrl = "https://kuna.io.2/api/v2";
+  describe('constructor with bad url ' + badUrl,
     function () {
-      var kuna = new Kuna.KunaApiClient("", "", badurl);
+      var kuna = new Kuna.KunaApiClient("", "", badUrl);
       it('getTicker(btcuah)', function (done) {
         kuna.getTicker("btcuah").then(function () {
-            done(new Error("should throw exception  with bad url " + badurl));
+            done(new Error("should throw exception with bad url " + badUrl));
           })
           .catch(function () {
             done(); //swallow error

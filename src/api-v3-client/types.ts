@@ -12,7 +12,6 @@ export type KunaV3Ticker = {
     low: number;
 }
 
-
 export type KunaV3Order = [number, number, number];
 
 export type KunaV3OrderBook = {
@@ -26,7 +25,6 @@ export type KunaV3ExchangeRate = {
     uah: number;
     usd: number;
 };
-
 
 export type KunaV3Currency = {
     id: number;
@@ -46,7 +44,6 @@ export type KunaV3Currency = {
     sort_order: number;
 };
 
-
 export type KunaV3LandingPageStatistic = {
     day_usd_sum: number;
     traders: number;
@@ -60,4 +57,9 @@ export type KunaV3Market = {
     id: string;
     price_change: number;
     quote_precision: number;
+};
+
+export type KunaAPIToken = {
+    publicKey: string;
+    privateKey: string;
 };

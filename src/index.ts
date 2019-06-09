@@ -11,6 +11,7 @@ export {
     KunaV3Currency,
     KunaV3LandingPageStatistic,
     KunaV3Market,
+    KunaAPIToken,
 } from './api-v3-client';
 
 
