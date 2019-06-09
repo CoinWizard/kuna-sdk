@@ -54,11 +54,18 @@ export default class KunaApiV3Client {
 
         const signatureString = `${path}${nonce}${JSON.stringify(data)}`;
         const signature
-            = crypto.createHmac('sha384', this.apiToken.privateKey)
-            .update(signatureString)
-            .digest('hex');
+            = crypto.createHmac('sha384', this.apiToken.privateKey).
+            update(signatureString).
+            digest('hex');
 
-        this.client.request({
+        console.log({
+            path: path,
+            data: data,
+            signature: signature,
+            nonce: nonce,
+        });
+
+        const response = await this.client.request({
             url: path,
             method: method,
             data: data,
@@ -69,6 +76,9 @@ export default class KunaApiV3Client {
             },
         });
 
+        console.log(response.data);
+
+        return response.data;
     }
 
     public async status(): Promise<any> {
@@ -107,7 +117,6 @@ export default class KunaApiV3Client {
         return response.data;
     }
 
-
     public async checkKunaCode(code: string): Promise<any> {
         const response = await this.client.get(`/v3/kuna_codes/${code}/check`);
 
@@ -140,5 +149,70 @@ export default class KunaApiV3Client {
         const response = await this.client.get('/v3/markets');
 
         return response.data;
+    }
+
+    public async myWallets(): Promise<any> {
+        return await this.privateRequest(
+            '/v3/auth/r/wallets',
+            'POST',
+            {},
+        );
+    }
+
+    public async me(): Promise<any> {
+        return await this.privateRequest(
+            '/v3/auth/me',
+            'POST',
+            {},
+        );
+    }
+
+    public async myOrderList(market?: string): Promise<any> {
+        return await this.privateRequest(
+            '/v3/auth/r/orders' + (market ? `/${market}` : ''),
+            'POST',
+            {},
+        );
+    }
+
+    public async myOrderHistory(
+        market?: string,
+        start?: number,
+        end?: number,
+        limit?: number,
+        sort?: boolean,
+    ): Promise<any> {
+
+        const data: any = {};
+        if (start) {
+            data.start = start;
+        }
+        if (end) {
+            data.end = end;
+        }
+        if (limit) {
+            data.limit = limit;
+        }
+
+        if (typeof sort !== 'undefined') {
+            data.sort = sort ? 1 : -1;
+        }
+
+        return await this.privateRequest(
+            '/v3/auth/r/orders' + (market ? `/${market}` : '') + '/hist',
+            'POST',
+            data,
+        );
+    }
+
+    public async myTradesByOrder(
+        market: string,
+        orderId: number | string,
+    ): Promise<any> {
+        return await this.privateRequest(
+            `/v3/auth/r/order/${market}:${orderId}/trades`,
+            'POST',
+            {},
+        );
     }
 }
