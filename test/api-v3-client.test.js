@@ -55,4 +55,10 @@ describe('Test API V3 Client', () => {
 
         assert.ok(typeof data, 'object');
     });
+
+    it('Test Cancel order', async () => {
+        // const data = await apiClient.myCancelOrder();
+        //
+        // assert.ok(typeof data, 'object');
+    });
 });

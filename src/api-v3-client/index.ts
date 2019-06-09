@@ -215,4 +215,20 @@ export default class KunaApiV3Client {
             {},
         );
     }
+
+    public async myCancelOrder(
+        orderIds: string | string[] | number | number[],
+    ): Promise<any> {
+
+        let path = `/v3/order/cancel`;
+        const data: any = {};
+        if (Array.isArray(orderIds)) {
+            data.order_ids = orderIds;
+            path += '/multy';
+        } else {
+            data.order_id = orderIds;
+        }
+
+        return await this.privateRequest(path, 'POST', data);
+    }
 }
