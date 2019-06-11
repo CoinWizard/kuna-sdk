@@ -117,12 +117,6 @@ export default class KunaApiV3Client {
         return response.data;
     }
 
-    public async checkKunaCode(code: string): Promise<any> {
-        const response = await this.client.get(`/v3/kuna_codes/${code}/check`);
-
-        return response.data;
-    }
-
     public async getExchangeRates(): Promise<KunaV3ExchangeRate[]> {
         const response = await this.client.get('/v3/exchange-rates');
 
@@ -219,7 +213,6 @@ export default class KunaApiV3Client {
     public async myCancelOrder(
         orderIds: string | string[] | number | number[],
     ): Promise<any> {
-
         let path = `/v3/order/cancel`;
         const data: any = {};
         if (Array.isArray(orderIds)) {
@@ -230,5 +223,49 @@ export default class KunaApiV3Client {
         }
 
         return await this.privateRequest(path, 'POST', data);
+    }
+
+    public async checkKunaCode(code: string): Promise<any> {
+        const response = await this.client.get(`/v3/kuna_codes/${code}/check`);
+
+        return response.data;
+    }
+
+    public async kunaCodeCreate(amount: number, cur: string): Promise<any> {
+        let data: any = {
+            amount: amount,
+            currency: cur,
+        };
+
+        return await this.privateRequest(
+            `/v3/auth/kuna_codes`,
+            'POST',
+            data,
+        );
+    }
+
+    public async kunaCodeDetails(id: number): Promise<any> {
+        let data: any = { id };
+        return await this.privateRequest(
+            `/v3/auth/kuna_codes/details`,
+            'POST',
+            data,
+        );
+    }
+
+    public async kunaCodesRedeemed(): Promise<any[]> {
+        return await this.privateRequest(
+            '/v3/auth/kuna_codes/redeemed-by-me',
+            'POST',
+            {},
+        );
+    }
+
+    public async kunaCodeIssued(): Promise<any[]> {
+        return await this.privateRequest(
+            '/v3/auth/kuna_codes/issued-by-me',
+            'POST',
+            {},
+        );
     }
 }

@@ -31,8 +31,6 @@ describe('Test API V3 Client', () => {
         const data = await apiClient.checkKunaCode('DfJhS');
 
         assert.ok(typeof data, 'object');
-
-        console.log(data);
     });
 
     it('Test my Order list', async () => {
@@ -56,9 +54,13 @@ describe('Test API V3 Client', () => {
         assert.ok(typeof data, 'object');
     });
 
-    it('Test Cancel order', async () => {
-        // const data = await apiClient.myCancelOrder();
-        //
-        // assert.ok(typeof data, 'object');
+    it('Kuna Code redeemed by me', async () => {
+        const data = await apiClient.kunaCodesRedeemed();
+        console.log(data);
+    });
+
+    it('Kuna Code issued by me', async () => {
+        const data = await apiClient.kunaCodeIssued();
+        console.log(data);
     });
 });
