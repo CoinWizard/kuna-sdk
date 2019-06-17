@@ -1,3 +1,11 @@
+/**
+ * @warning
+ *
+ * It's unstable version of node Kuna API v3 client.
+ * Please do not use it on production environment and don't try to trade with
+ * real funds.
+ */
+
 import { head } from 'lodash';
 import crypto from 'crypto';
 import Axios, { AxiosInstance } from 'axios';
@@ -13,7 +21,10 @@ import {
     KunaV3Market,
     KunaV3LastTrade,
     KunaAPIToken,
+    KunaApiV3BaseInterface,
 } from './types';
+
+import { KunaCodeProvider } from './providers';
 
 export {
     KunaV3Ticker,
@@ -26,11 +37,13 @@ export {
     KunaAPIToken,
 };
 
-export default class KunaApiV3Client {
+export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
     private readonly baseURL: string;
     private readonly client: AxiosInstance;
     private readonly apiToken?: KunaAPIToken;
+
+    private kunaCodeProvider?: KunaCodeProvider;
 
     public constructor(apiToken?: KunaAPIToken, baseURL?: string) {
         this.baseURL = baseURL || 'https://api.kuna.io';
@@ -41,11 +54,11 @@ export default class KunaApiV3Client {
         this.apiToken = apiToken;
     }
 
-    public async privateRequest(
+    public async privateRequest<R = any>(
         path: string,
-        method = 'GET',
+        method: string = 'GET',
         data: object = {},
-    ): Promise<any> {
+    ): Promise<R> {
         if (!this.apiToken) {
             throw new Error('API Token does not provided');
         }
@@ -58,13 +71,6 @@ export default class KunaApiV3Client {
             update(signatureString).
             digest('hex');
 
-        // console.log({
-        //     path: path,
-        //     data: data,
-        //     signature: signature,
-        //     nonce: nonce,
-        // });
-
         const response = await this.client.request({
             url: path,
             method: method,
@@ -76,13 +82,37 @@ export default class KunaApiV3Client {
             },
         });
 
-        // console.log(response.data);
+        return response.data as R;
+    }
 
-        return response.data;
+    /**
+     * This method returns Axios HTTP client
+     *
+     * @return {AxiosInstance}
+     */
+    public getClient(): AxiosInstance {
+        return this.client;
+    }
+
+    /**
+     * @return {KunaCodeProvider}
+     */
+    public kunaCode(): KunaCodeProvider {
+        if (this.kunaCodeProvider) {
+            this.kunaCodeProvider = new KunaCodeProvider(this);
+        }
+
+        return this.kunaCodeProvider;
     }
 
     public async status(): Promise<any> {
         const response = await this.client.get('/v3/status');
+
+        return response.data;
+    }
+
+    public async getFees(): Promise<any> {
+        const response = await this.client.get('/v3/fees');
 
         return response.data;
     }
@@ -225,47 +255,48 @@ export default class KunaApiV3Client {
         return await this.privateRequest(path, 'POST', data);
     }
 
-    public async checkKunaCode(code: string): Promise<any> {
-        const response = await this.client.get(`/v3/kuna_codes/${code}/check`);
-
-        return response.data;
+    public async getDepositInfo(currency: string): Promise<any> {
+        return await this.privateRequest(
+            '/v3/auth/deposit/info',
+            'POST',
+            { currency },
+        );
     }
 
-    public async kunaCodeCreate(amount: number, cur: string): Promise<any> {
-        let data: any = {
-            amount: amount,
-            currency: cur,
-        };
+    public async creteDepositAddress(currency: string): Promise<any> {
+        return await this.privateRequest(
+            '/v3/auth/payment_addresses',
+            'POST',
+            { currency },
+        );
+    }
+
+    public async fundSourceList(currency: string): Promise<any> {
+        return await this.privateRequest(
+            '/v3/auth/fund_sources/list',
+            'POST',
+            { currency },
+        );
+    }
+
+    public async assetHistory(
+        type?: 'withdraws' | 'deposits',
+        currencyIds?: number[],
+        statuses?: string[],
+    ): Promise<any> {
+        const data: any = {};
+        if (currencyIds && currencyIds.length > 0) {
+            data.currency_ids = currencyIds;
+        }
+
+        if (statuses && statuses.length > 0) {
+            data.statuses = statuses;
+        }
 
         return await this.privateRequest(
-            `/v3/auth/kuna_codes`,
+            `/v3/auth/assets-history` + (type ? `/${type}` : ''),
             'POST',
             data,
-        );
-    }
-
-    public async kunaCodeDetails(id: number): Promise<any> {
-        let data: any = { id };
-        return await this.privateRequest(
-            `/v3/auth/kuna_codes/details`,
-            'POST',
-            data,
-        );
-    }
-
-    public async kunaCodesRedeemed(): Promise<any[]> {
-        return await this.privateRequest(
-            '/v3/auth/kuna_codes/redeemed-by-me',
-            'POST',
-            {},
-        );
-    }
-
-    public async kunaCodeIssued(): Promise<any[]> {
-        return await this.privateRequest(
-            '/v3/auth/kuna_codes/issued-by-me',
-            'POST',
-            {},
         );
     }
 }

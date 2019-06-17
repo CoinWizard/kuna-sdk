@@ -33,6 +33,7 @@ export enum KunaAssetUnit {
     TrueUSD = 'TUSD',
     Tether = 'USDT',
     StasisEuro = 'EURS',
+    PaytomatToken = 'PTI',
 
 
     KunaToken = 'KUN',
@@ -167,6 +168,13 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         color: AssetColor.DreamTeam,
         backgroundColor: AssetColor.DreamTeamBackground,
         format: '0,0.[0000]',
+    },
+    [KunaAssetUnit.PaytomatToken]: {
+        key: KunaAssetUnit.PaytomatToken,
+        name: 'Paytomat Token',
+        color: AssetColor.PaytomatToken,
+        backgroundColor: '#FFF',
+        format: '0,0.[000000]',
     },
     [KunaAssetUnit.Golos]: {
         key: KunaAssetUnit.Golos,

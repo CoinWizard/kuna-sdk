@@ -1,3 +1,5 @@
+import { AxiosInstance } from 'axios';
+
 export type KunaV3Ticker = {
     symbol: string;
     bid: number;
@@ -12,10 +14,7 @@ export type KunaV3Ticker = {
     low: number;
 }
 
-export type KunaV3LastTrade = {
-
-};
-
+export type KunaV3LastTrade = {};
 
 export type KunaV3Order = [number, number, number];
 
@@ -30,7 +29,6 @@ export type KunaV3ExchangeRate = {
     uah: number;
     usd: number;
 };
-
 
 export type KunaV3Currency = {
     id: number;
@@ -49,7 +47,6 @@ export type KunaV3Currency = {
     precision: { real: number; trade: number; };
     sort_order: number;
 };
-
 
 export type KunaV3LandingPageStatistic = {
     day_usd_sum: number;
@@ -70,3 +67,13 @@ export type KunaAPIToken = {
     publicKey: string;
     privateKey: string;
 };
+
+export interface KunaApiV3BaseInterface {
+    privateRequest<R = any>(
+        path: string,
+        method?: 'GET' | 'POST' | 'DELETE' | 'PUT',
+        data?: object,
+    ): Promise<R>;
+
+    getClient(): AxiosInstance;
+}

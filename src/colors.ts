@@ -33,6 +33,7 @@ export enum AssetColor {
     ZCash = '#222',
     CSNP = '#BEA74D',
     Stellar = '#566871',
+    PaytomatToken = '#D21F26',
 
     AdvancedUSD = '#02BC62',
     AdvancedRUB = '#02BC62',

@@ -27,8 +27,14 @@ describe('Test API V3 Client', () => {
         assert.ok(Array.isArray(data), 'Response must be an array');
     });
 
+    it('Test Fees', async () => {
+        const data = await apiClient.getFees();
+
+        assert.ok(Array.isArray(data), 'Response must be an array');
+    });
+
     it('Test Check Kuna Code', async () => {
-        const data = await apiClient.checkKunaCode('DfJhS');
+        const data = await apiClient.kunaCode().check('DfJhS');
 
         assert.ok(typeof data, 'object');
     });
@@ -55,12 +61,20 @@ describe('Test API V3 Client', () => {
     });
 
     it('Kuna Code redeemed by me', async () => {
-        const data = await apiClient.kunaCodesRedeemed();
-        console.log(data);
+        await apiClient.kunaCode().redeemed();
     });
 
     it('Kuna Code issued by me', async () => {
-        const data = await apiClient.kunaCodeIssued();
-        console.log(data);
+        await apiClient.kunaCode().issued();
+    });
+
+    it('Get deposit info', async () => {
+        const data = await apiClient.getDepositInfo('xrp');
+        assert.strictEqual(typeof data, 'object');
+    });
+
+    it('Get asset History', async () => {
+        const data = await apiClient.assetHistory();
+        assert.strictEqual(typeof data, 'object');
     });
 });
