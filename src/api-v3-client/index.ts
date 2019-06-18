@@ -67,9 +67,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
         const signatureString = `${path}${nonce}${JSON.stringify(data)}`;
         const signature
-            = crypto.createHmac('sha384', this.apiToken.privateKey).
-            update(signatureString).
-            digest('hex');
+            = crypto.createHmac('sha384', this.apiToken.privateKey).update(signatureString).digest('hex');
 
         const response = await this.client.request({
             url: path,
@@ -98,7 +96,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
      * @return {KunaCodeProvider}
      */
     public kunaCode(): KunaCodeProvider {
-        if (this.kunaCodeProvider) {
+        if (!this.kunaCodeProvider) {
             this.kunaCodeProvider = new KunaCodeProvider(this);
         }
 
@@ -174,6 +172,30 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
         return response.data;
     }
+
+
+    public async tradesHistory(market: string, resolution: number = 120, from?: number, to?: number): Promise<any> {
+
+        if (!from) {
+            from = (new Date().getTime() / 1000) - (7 * 24 * 60 * 60);
+        }
+
+        if (!to) {
+            to = new Date().getTime() / 1000;
+        }
+
+        const response = await this.client.get('/v3/trades_history', {
+            params: {
+                market: market,
+                resolution: resolution,
+                from: from,
+                to: to,
+            },
+        });
+
+        return response.data;
+    }
+
 
     public async myWallets(): Promise<any> {
         return await this.privateRequest(

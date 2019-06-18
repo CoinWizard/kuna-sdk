@@ -14,11 +14,25 @@ describe('Test API V3 Client', () => {
         });
     });
 
+    it('Trades History', async () => {
+        const data = await apiClient.tradesHistory('btcuah');
+
+        assert.strictEqual(typeof data, 'object');
+        assert.strictEqual(data.s, 'ok');
+
+        assert.ok(Array.isArray(data.t));
+        assert.ok(Array.isArray(data.h));
+        assert.ok(Array.isArray(data.l));
+        assert.ok(Array.isArray(data.o));
+        assert.ok(Array.isArray(data.c));
+        assert.ok(Array.isArray(data.v));
+    });
+
     it('Test Me', async () => {
         const data = await apiClient.me();
 
-        assert.ok(typeof data, 'object');
-        assert.ok(typeof data.email, 'string');
+        assert.strictEqual(typeof data, 'object');
+        assert.strictEqual(typeof data.email, 'string');
     });
 
     it('Test Wallets', async () => {
