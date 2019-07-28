@@ -1,5 +1,7 @@
 import { AxiosInstance } from 'axios';
 
+export type HistoryResolutions = number | string | '1D' | '1W';
+
 export type KunaV3Ticker = {
     symbol: string;
     bid: number;

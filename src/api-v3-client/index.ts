@@ -24,9 +24,10 @@ import {
     KunaApiV3BaseInterface,
     KunaV3MePublicKeys,
     KunaV3Me,
+    HistoryResolutions,
 } from './types';
 
-import { KunaCodeProvider, FiatProvider } from './providers';
+import { KunaCodeProvider, FiatProvider, PusherProvider } from './providers';
 
 export {
     KunaV3Ticker,
@@ -39,6 +40,7 @@ export {
     KunaAPIToken,
     KunaV3MePublicKeys,
     KunaV3Me,
+    HistoryResolutions,
 };
 
 export default class KunaApiV3Client implements KunaApiV3BaseInterface {
@@ -49,6 +51,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
     private kunaCodeProvider?: KunaCodeProvider;
     private fiatProvider?: FiatProvider;
+    private pusher?: PusherProvider;
 
     public constructor(apiToken?: KunaAPIToken, baseURL?: string) {
         this.baseURL = baseURL || 'https://api.kuna.io';
@@ -88,6 +91,14 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         });
 
         return response.data as R;
+    }
+
+    public getPusher(): PusherProvider {
+        if (!this.pusher) {
+            this.pusher = new PusherProvider();
+        }
+
+        return this.pusher;
     }
 
     /**
@@ -193,7 +204,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
     public async tradesHistory(
         market: string,
-        resolution: number = 60,
+        resolution: HistoryResolutions = 60,
         from?: number,
         to?: number,
     ): Promise<any> {
@@ -206,9 +217,9 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             to = new Date().getTime() / 1000;
         }
 
-        const response = await this.client.get('/v3/trades_history', {
+        const response = await this.client.get('/v3/tv/history', {
             params: {
-                market: market,
+                symbol: market,
                 resolution: resolution,
                 from: from,
                 to: to,

@@ -26,12 +26,14 @@
         "axios": "0.18.0",
         "debug": "3.1.0",
         "lodash": "4.17.10",
+        "pusher-js": "5.0.0",
         "qs": "6.5.2"
     },
     "devDependencies": {
         "@babel/register": "7.0.0",
         "@types/lodash": "4.14.116",
         "@types/node": "10.11.3",
+        "@types/pusher-js": "4.2.2",
         "@types/qs": "6.5.1",
         "assert": "1.4.1",
         "babel-core": "6.26.3",
