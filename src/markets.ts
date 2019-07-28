@@ -56,6 +56,20 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
+    bnbrub: {
+        key: 'bnbrub',
+        baseAsset: KunaAssetUnit.BinanceCoin,
+        quoteAsset: KunaAssetUnit.RussianRuble,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
+    bnbusdt: {
+        key: 'bnbusdt',
+        baseAsset: KunaAssetUnit.BinanceCoin,
+        quoteAsset: KunaAssetUnit.Tether,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
     ethuah: {
         key: 'ethuah',
         baseAsset: KunaAssetUnit.Ethereum,

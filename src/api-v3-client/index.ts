@@ -22,9 +22,11 @@ import {
     KunaV3LastTrade,
     KunaAPIToken,
     KunaApiV3BaseInterface,
+    KunaV3MePublicKeys,
+    KunaV3Me,
 } from './types';
 
-import { KunaCodeProvider } from './providers';
+import { KunaCodeProvider, FiatProvider } from './providers';
 
 export {
     KunaV3Ticker,
@@ -35,6 +37,8 @@ export {
     KunaV3LandingPageStatistic,
     KunaV3Market,
     KunaAPIToken,
+    KunaV3MePublicKeys,
+    KunaV3Me,
 };
 
 export default class KunaApiV3Client implements KunaApiV3BaseInterface {
@@ -44,6 +48,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
     private readonly apiToken?: KunaAPIToken;
 
     private kunaCodeProvider?: KunaCodeProvider;
+    private fiatProvider?: FiatProvider;
 
     public constructor(apiToken?: KunaAPIToken, baseURL?: string) {
         this.baseURL = baseURL || 'https://api.kuna.io';
@@ -66,8 +71,10 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         const nonce = new Date().getTime();
 
         const signatureString = `${path}${nonce}${JSON.stringify(data)}`;
-        const signature
-            = crypto.createHmac('sha384', this.apiToken.privateKey).update(signatureString).digest('hex');
+        const signature = crypto
+            .createHmac('sha384', this.apiToken.privateKey)
+            .update(signatureString)
+            .digest('hex');
 
         const response = await this.client.request({
             url: path,
@@ -101,6 +108,17 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         }
 
         return this.kunaCodeProvider;
+    }
+
+    /**
+     * @return {FiatProvider}
+     */
+    public fiat(): FiatProvider {
+        if (!this.fiatProvider) {
+            this.fiatProvider = new FiatProvider(this);
+        }
+
+        return this.fiatProvider;
     }
 
     public async status(): Promise<any> {
@@ -173,8 +191,12 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data;
     }
 
-
-    public async tradesHistory(market: string, resolution: number = 120, from?: number, to?: number): Promise<any> {
+    public async tradesHistory(
+        market: string,
+        resolution: number = 60,
+        from?: number,
+        to?: number,
+    ): Promise<any> {
 
         if (!from) {
             from = (new Date().getTime() / 1000) - (7 * 24 * 60 * 60);
@@ -195,7 +217,6 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
         return response.data;
     }
-
 
     public async myWallets(): Promise<any> {
         return await this.privateRequest(
@@ -293,7 +314,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         );
     }
 
-    public async fundSourceList(currency: string): Promise<any> {
+    public async fundSourceList(currency: number): Promise<any> {
         return await this.privateRequest(
             '/v3/auth/fund_sources/list',
             'POST',
@@ -319,6 +340,14 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             `/v3/auth/assets-history` + (type ? `/${type}` : ''),
             'POST',
             data,
+        );
+    }
+
+    public async depositDetails(id: string): Promise<any> {
+        return await this.privateRequest(
+            `/v3/auth/deposit/details`,
+            'POST',
+            { id: id },
         );
     }
 }

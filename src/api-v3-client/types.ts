@@ -63,6 +63,22 @@ export type KunaV3Market = {
     quote_precision: number;
 };
 
+export type KunaV3MePublicKeys = {
+    deposit_sdk_uah_public_key: string;
+    deposit_sdk_usd_public_key: string;
+    deposit_sdk_rub_public_key: string;
+    [key: string]: string;
+
+}
+
+export type KunaV3Me = {
+    email: string;
+    kunaid: string;
+    two_factor: boolean;
+    withdraw_confirmation: true;
+    public_keys: KunaV3MePublicKeys;
+};
+
 export type KunaAPIToken = {
     publicKey: string;
     privateKey: string;
@@ -76,4 +92,6 @@ export interface KunaApiV3BaseInterface {
     ): Promise<R>;
 
     getClient(): AxiosInstance;
+
+    me(): Promise<KunaV3Me>;
 }

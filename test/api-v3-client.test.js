@@ -91,4 +91,30 @@ describe('Test API V3 Client', () => {
         const data = await apiClient.assetHistory();
         assert.strictEqual(typeof data, 'object');
     });
+
+
+    it('Get asset History Deposit', async () => {
+        const data = await apiClient.assetHistory('deposits');
+        assert.strictEqual(typeof data, 'object');
+
+        console.log(data);
+    });
+
+    it('Payout Pre Request', async () => {
+        const data = await apiClient.fiat().payoutPrerequest('UAH', 1000);
+        assert.strictEqual(typeof data, 'object');
+    });
+
+    it('Payment Pre Request', async () => {
+        const data = await apiClient.fiat().paymentPrerequest('UAH');
+        assert.strictEqual(typeof data, 'object');
+    });
+
+
+    it('Deposit details', async () => {
+        const data = await apiClient.depositDetails(581303);
+        assert.strictEqual(typeof data, 'object');
+
+        console.log(data);
+    });
 });
