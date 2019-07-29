@@ -8,7 +8,7 @@
 
 import { head } from 'lodash';
 import crypto from 'crypto';
-import Axios, { AxiosInstance } from 'axios';
+import Axios, { AxiosInstance, AxiosRequestConfig, Method } from 'axios';
 import { mapTicker, mapOrderBook } from './utils';
 
 import {
@@ -64,7 +64,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
     public async privateRequest<R = any>(
         path: string,
-        method: string = 'GET',
+        method: Method = 'GET',
         data: object = {},
     ): Promise<R> {
         if (!this.apiToken) {
@@ -79,7 +79,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             .update(signatureString)
             .digest('hex');
 
-        const response = await this.client.request({
+        const requestConfig: AxiosRequestConfig = {
             url: path,
             method: method,
             data: data,
@@ -88,7 +88,9 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
                 'Kun-ApiKey': this.apiToken.publicKey,
                 'Kun-Signature': signature,
             },
-        });
+        };
+
+        const response = await this.client.request(requestConfig);
 
         return response.data as R;
     }
@@ -321,7 +323,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return await this.privateRequest(
             '/v3/auth/payment_addresses',
             'POST',
-            { currency },
+            { currency: currency.toLowerCase() },
         );
     }
 

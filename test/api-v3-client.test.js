@@ -41,6 +41,20 @@ describe('Test API V3 Client', () => {
         assert.ok(Array.isArray(data), 'Response must be an array');
     });
 
+    it('Test Create Deposit addresses', async () => {
+        try {
+            const data = await apiClient.creteDepositAddress('ltc');
+            assert.ok(data, 'Response must be an object');
+
+            const depositInfo = await apiClient.getDepositInfo('ltc');
+            assert.ok(depositInfo, 'Response must be an object');
+        } catch (error) {
+            console.log(error.response.data);
+
+            throw error;
+        }
+    });
+
     it('Test Fees', async () => {
         const data = await apiClient.getFees();
 
@@ -92,12 +106,9 @@ describe('Test API V3 Client', () => {
         assert.strictEqual(typeof data, 'object');
     });
 
-
     it('Get asset History Deposit', async () => {
         const data = await apiClient.assetHistory('deposits');
         assert.strictEqual(typeof data, 'object');
-
-        console.log(data);
     });
 
     it('Payout Pre Request', async () => {
@@ -110,11 +121,8 @@ describe('Test API V3 Client', () => {
         assert.strictEqual(typeof data, 'object');
     });
 
-
     it('Deposit details', async () => {
         const data = await apiClient.depositDetails(581303);
         assert.strictEqual(typeof data, 'object');
-
-        console.log(data);
     });
 });

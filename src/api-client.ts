@@ -1,4 +1,4 @@
-import Axios, { AxiosInstance, AxiosResponse } from 'axios';
+import Axios, { AxiosInstance, AxiosResponse, Method } from 'axios';
 import qs from 'qs';
 import { map, flatMap, chain } from 'lodash';
 import crypto from 'crypto';
@@ -149,7 +149,7 @@ export class KunaApiClient {
     }
 
 
-    protected async privateRequest<R = object>(path: string, params: object = {}, method: string = 'GET'): Promise<R> {
+    protected async privateRequest<R = object>(path: string, params: object = {}, method: Method = 'GET'): Promise<R> {
         const tonce = new Date().getTime();
 
         let requestParams = {

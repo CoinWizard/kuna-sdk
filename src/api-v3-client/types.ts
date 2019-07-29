@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance, Method } from 'axios';
 
 export type HistoryResolutions = number | string | '1D' | '1W';
 
@@ -89,7 +89,7 @@ export type KunaAPIToken = {
 export interface KunaApiV3BaseInterface {
     privateRequest<R = any>(
         path: string,
-        method?: 'GET' | 'POST' | 'DELETE' | 'PUT',
+        method?: Method,
         data?: object,
     ): Promise<R>;
 
