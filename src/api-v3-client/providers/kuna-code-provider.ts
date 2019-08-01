@@ -9,7 +9,7 @@ export default class KunaCodeProvider {
 
     public async check(code: string): Promise<any> {
         const response = await this.client.getClient().
-            get(`/v3/kuna_codes/${code}/check`);
+        get(`/v3/kuna_codes/${code}/check`);
 
         return response.data;
     }
