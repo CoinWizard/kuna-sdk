@@ -352,6 +352,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
+    xrprub: {
+        key: 'xrprub',
+        baseAsset: KunaAssetUnit.Ripple,
+        quoteAsset: KunaAssetUnit.RussianRuble,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
     usdtrub: {
         key: 'usdtrub',
         baseAsset: KunaAssetUnit.Tether,

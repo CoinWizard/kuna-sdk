@@ -42,6 +42,6 @@
         "expect": "23.6.0",
         "mocha": "5.2.0",
         "moment": "2.24.0",
-        "typescript": "3.0.1"
+        "typescript": "3.5.3"
     }
 }
