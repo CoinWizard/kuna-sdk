@@ -45,20 +45,24 @@ describe('Test API V3 Client', () => {
         try {
             const data = await apiClient.creteDepositAddress('ltc');
             assert.ok(data, 'Response must be an object');
-
-            const depositInfo = await apiClient.getDepositInfo('ltc');
-            assert.ok(depositInfo, 'Response must be an object');
         } catch (error) {
-            console.log(error.response.data);
 
-            throw error;
         }
+
+        const depositInfo = await apiClient.getDepositInfo('ltc');
+        assert.ok(depositInfo, 'Response must be an object');
     });
 
     it('Test Fees', async () => {
         const data = await apiClient.getFees();
 
         assert.ok(Array.isArray(data), 'Response must be an array');
+    });
+
+    it('Send To', async () => {
+        const data = await apiClient.sendTo('r1ukpd5hq3me', 'btc');
+
+        console.log(data);
     });
 
     it('Test Check Kuna Code', async () => {
