@@ -1,6 +1,6 @@
 {
     "name": "kuna-sdk",
-    "version": "0.4.0-beta.18",
+    "version": "0.4.0",
     "description": "NodeJS SDK for Kuna exchange for API v2 and v3",
     "keywords": [
         "kuna.io",
@@ -42,6 +42,6 @@
         "expect": "23.6.0",
         "mocha": "5.2.0",
         "moment": "2.24.0",
-        "typescript": "3.0.1"
+        "typescript": "3.5.3"
     }
 }

@@ -27,7 +27,7 @@ import {
     HistoryResolutions,
 } from './types';
 
-import { KunaCodeProvider, FiatProvider, PusherProvider } from './providers';
+import { KunaCodeProvider, FiatProvider, PusherProvider, ChartProvider } from './providers';
 
 export {
     KunaV3Ticker,
@@ -50,6 +50,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
     private readonly apiToken?: KunaAPIToken;
 
     private kunaCodeProvider?: KunaCodeProvider;
+    private chartProvider?: ChartProvider;
     private fiatProvider?: FiatProvider;
     private pusher?: PusherProvider;
 
@@ -134,6 +135,17 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return this.fiatProvider;
     }
 
+    /**
+     * @return {ChartProvider}
+     */
+    public chart(): ChartProvider {
+        if (!this.chartProvider) {
+            this.chartProvider = new ChartProvider(this);
+        }
+
+        return this.chartProvider;
+    }
+
     public async status(): Promise<any> {
         const response = await this.client.get('/v3/status');
 
@@ -188,9 +200,24 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data;
     }
 
+    /**
+     * @param {string} kunaid
+     * @param {string} currency
+     *
+     * @return {Promise<any>}
+     */
+    public async sendTo(kunaid: string, currency: string): Promise<any> {
+        const response = await this.client.post('/v3/send_to', {
+            kunaid: kunaid,
+            currency: currency,
+        });
+
+        return response.data;
+    }
+
     public async getLandingPageStatistics(): Promise<KunaV3Currency[]> {
         console.warn(
-            'Please! Dont use the method KunaApiV3Client::getLandingPageStatistics()',
+            `Please! Don't use the method KunaApiV3Client::getLandingPageStatistics()`,
         );
 
         const response = await this.client.get('/v3/landing_page_statistic');
@@ -204,6 +231,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data;
     }
 
+    /** @deprecated */
     public async tradesHistory(
         market: string,
         resolution: HistoryResolutions = 60,
