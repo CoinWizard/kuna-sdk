@@ -60,7 +60,11 @@ describe('Test API V3 Client', () => {
     });
 
     it('Send To', async () => {
-        const data = await apiClient.sendTo('r1ukpd5hq3me', 'btc');
+        const data = await apiClient.sendTo({
+            currency: 'btc',
+            kunaid: 'kunaid-r1ukpd5hq3me',
+
+        });
 
         console.log(data);
     });

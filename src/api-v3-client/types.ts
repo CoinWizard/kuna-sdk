@@ -81,6 +81,23 @@ export type KunaV3Me = {
     public_keys: KunaV3MePublicKeys;
 };
 
+export type KunaV3SendToParams = {
+    currency: string;
+    amount: number;
+    kunaid: string;
+    gRecaptchaResponse: string;
+
+    comment?: string;
+    channel?: string;
+};
+
+export type KunaV3SendTo = {
+    address: string;
+    memo: string;
+    sn: string;
+    currency: string;
+};
+
 export type KunaAPIToken = {
     publicKey: string;
     privateKey: string;

@@ -24,6 +24,8 @@ import {
     KunaApiV3BaseInterface,
     KunaV3MePublicKeys,
     KunaV3Me,
+    KunaV3SendToParams,
+    KunaV3SendTo,
     HistoryResolutions,
 } from './types';
 
@@ -40,6 +42,8 @@ export {
     KunaAPIToken,
     KunaV3MePublicKeys,
     KunaV3Me,
+    KunaV3SendToParams,
+    KunaV3SendTo,
     HistoryResolutions,
 };
 
@@ -54,6 +58,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
     private fiatProvider?: FiatProvider;
     private pusher?: PusherProvider;
 
+
     public constructor(apiToken?: KunaAPIToken, baseURL?: string) {
         this.baseURL = baseURL || 'https://api.kuna.io';
         this.client = Axios.create({
@@ -62,6 +67,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
         this.apiToken = apiToken;
     }
+
 
     public async privateRequest<R = any>(
         path: string,
@@ -96,6 +102,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data as R;
     }
 
+
     public getPusher(): PusherProvider {
         if (!this.pusher) {
             this.pusher = new PusherProvider();
@@ -103,6 +110,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
         return this.pusher;
     }
+
 
     /**
      * This method returns Axios HTTP client
@@ -112,6 +120,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
     public getClient(): AxiosInstance {
         return this.client;
     }
+
 
     /**
      * @return {KunaCodeProvider}
@@ -124,6 +133,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return this.kunaCodeProvider;
     }
 
+
     /**
      * @return {FiatProvider}
      */
@@ -134,6 +144,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
         return this.fiatProvider;
     }
+
 
     /**
      * @return {ChartProvider}
@@ -146,17 +157,20 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return this.chartProvider;
     }
 
+
     public async status(): Promise<any> {
         const response = await this.client.get('/v3/status');
 
         return response.data;
     }
 
+
     public async getFees(): Promise<any> {
         const response = await this.client.get('/v3/fees');
 
         return response.data;
     }
+
 
     public async getTicker(symbol: string): Promise<KunaV3Ticker> {
         const response = await this.client.get('/v3/tickers', {
@@ -165,6 +179,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
         return mapTicker(head(response.data));
     }
+
 
     public async getTickers(symbols?: string[]): Promise<KunaV3Ticker[]> {
         const requestSymbols = symbols ? symbols.join(',') : 'ALL';
@@ -176,11 +191,13 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data.map(mapTicker);
     }
 
+
     public async getOrderBook(symbol: string): Promise<KunaV3OrderBook> {
         const response = await this.client.get(`/v3/book/${symbol}`);
 
         return mapOrderBook(response.data);
     }
+
 
     public async getLastTrades(symbol: string): Promise<KunaV3LastTrade> {
         const response = await this.client.get(`/trades/${symbol}`);
@@ -188,11 +205,13 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data;
     }
 
+
     public async getExchangeRates(): Promise<KunaV3ExchangeRate[]> {
         const response = await this.client.get('/v3/exchange-rates');
 
         return response.data;
     }
+
 
     public async getCurrencies(): Promise<KunaV3Currency[]> {
         const response = await this.client.get('/v3/currencies');
@@ -200,20 +219,36 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data;
     }
 
+
     /**
-     * @param {string} kunaid
-     * @param {string} currency
+     * @param {KunaV3SendToParams}  params
      *
-     * @return {Promise<any>}
+     * @return {Promise<KunaV3SendTo>}
      */
-    public async sendTo(kunaid: string, currency: string): Promise<any> {
-        const response = await this.client.post('/v3/send_to', {
+    public async sendTo(params: KunaV3SendToParams): Promise<KunaV3SendTo> {
+        const data = {
+            currency: params.currency,
+            amount: params.amount,
+            recipient: params.kunaid,
+            'g-recaptcha-response': params.gRecaptchaResponse,
+            comment: params.comment,
+            channel: params.channel,
+        };
+
+        const response = await this.client.post('/v3/send_to', data);
+
+        return response.data;
+    }
+
+
+    public async checkKunaid(kunaid: string): Promise<any> {
+        const response = await this.client.post('/v3/kunaid', {
             kunaid: kunaid,
-            currency: currency,
         });
 
         return response.data;
     }
+
 
     public async getLandingPageStatistics(): Promise<KunaV3Currency[]> {
         console.warn(
@@ -225,11 +260,13 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data;
     }
 
+
     public async getMarkets(): Promise<KunaV3Market[]> {
         const response = await this.client.get('/v3/markets');
 
         return response.data;
     }
+
 
     /** @deprecated */
     public async tradesHistory(
@@ -259,6 +296,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return response.data;
     }
 
+
     public async myWallets(): Promise<any> {
         return await this.privateRequest(
             '/v3/auth/r/wallets',
@@ -266,6 +304,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             {},
         );
     }
+
 
     public async me(): Promise<any> {
         return await this.privateRequest(
@@ -275,6 +314,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         );
     }
 
+
     public async myOrderList(market?: string): Promise<any> {
         return await this.privateRequest(
             '/v3/auth/r/orders' + (market ? `/${market}` : ''),
@@ -282,6 +322,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             {},
         );
     }
+
 
     public async myOrderHistory(
         market?: string,
@@ -313,6 +354,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         );
     }
 
+
     public async myTradesByOrder(
         market: string,
         orderId: number | string,
@@ -323,6 +365,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             {},
         );
     }
+
 
     public async myCancelOrder(
         orderIds: string | string[] | number | number[],
@@ -339,6 +382,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         return await this.privateRequest(path, 'POST', data);
     }
 
+
     public async getDepositInfo(currency: string): Promise<any> {
         return await this.privateRequest(
             '/v3/auth/deposit/info',
@@ -346,6 +390,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             { currency },
         );
     }
+
 
     public async creteDepositAddress(currency: string): Promise<any> {
         return await this.privateRequest(
@@ -355,6 +400,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         );
     }
 
+
     public async fundSourceList(currency: number): Promise<any> {
         return await this.privateRequest(
             '/v3/auth/fund_sources/list',
@@ -362,6 +408,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             { currency },
         );
     }
+
 
     public async assetHistory(
         type?: 'withdraws' | 'deposits',
@@ -383,6 +430,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             data,
         );
     }
+
 
     public async depositDetails(id: string): Promise<any> {
         return await this.privateRequest(
