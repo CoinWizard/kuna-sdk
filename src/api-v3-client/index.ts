@@ -8,6 +8,7 @@
 
 import { head } from 'lodash';
 import crypto from 'crypto';
+import pusher from 'pusher-js';
 import Axios, { AxiosInstance, AxiosRequestConfig, Method } from 'axios';
 import { mapTicker, mapOrderBook } from './utils';
 
@@ -56,8 +57,6 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
     private kunaCodeProvider?: KunaCodeProvider;
     private chartProvider?: ChartProvider;
     private fiatProvider?: FiatProvider;
-    private pusher?: PusherProvider;
-
 
     public constructor(apiToken?: KunaAPIToken, baseURL?: string) {
         this.baseURL = baseURL || 'https://api.kuna.io';
@@ -103,12 +102,8 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
     }
 
 
-    public getPusher(): PusherProvider {
-        if (!this.pusher) {
-            this.pusher = new PusherProvider();
-        }
-
-        return this.pusher;
+    public createPusher(PusherBuilder: pusher.PusherStatic): PusherProvider {
+        return new PusherProvider(PusherBuilder, this);
     }
 
 
