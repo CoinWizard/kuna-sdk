@@ -22,7 +22,7 @@ export default class FiatProvider {
 
     public async payoutPrerequest(
         currency: string,
-        amount: number
+        amount: number,
     ): Promise<any> {
         const keys = await this.getPublicKeys();
 
@@ -34,18 +34,31 @@ export default class FiatProvider {
         const requestData = {
             amount: amount,
             currency: currency.toUpperCase(),
-            public_key: publicKey
+            public_key: publicKey,
         };
 
-        const response = await this.payClient
-            .post('/payout-prerequest', requestData);
+        const response
+            = await this.payClient.post('/payout-prerequest', requestData);
 
         return response.data;
     }
 
-
     public async paymentPrerequest(
-        currency: string
+        currency: string,
+    ): Promise<any> {
+
+        const requestData = {
+            currency: currency.toUpperCase(),
+        };
+
+        const response
+            = await this.client.getClient().post('/v3/deposit/prerequest', requestData);
+
+        return response.data;
+    }
+
+    public async paymentPrerequestSign(
+        currency: string,
     ): Promise<any> {
         const keys = await this.getPublicKeys();
 
@@ -55,11 +68,11 @@ export default class FiatProvider {
 
         const requestData = {
             currency: currency.toUpperCase(),
-            public_key: publicKey
+            public_key: publicKey,
         };
 
-        const response = await this.payClient
-            .post('/payment-prerequest', requestData);
+        const response
+            = await this.payClient.post('/payment-prerequest', requestData);
 
         return response.data;
     }
