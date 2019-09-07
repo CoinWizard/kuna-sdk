@@ -1,15 +1,17 @@
-import Pusher from 'pusher-js';
-import { KunaMarket } from 'markets';
+import pusher from 'pusher-js';
+import { KunaApiV3BaseInterface } from '../types';
 
 const KUNA_PUSHER_KEY = '4b6a8b2c758be4e58868';
 const KUNA_PUSHER_HOST = 'pusher.kuna.io';
 
 export default class PusherProvider {
 
-    protected pusher: Pusher.Pusher;
+    protected pusher: pusher.Pusher;
+    protected client: KunaApiV3BaseInterface;
 
-    public constructor() {
-        this.pusher = new Pusher(KUNA_PUSHER_KEY, {
+    public constructor(PusherBuilder: pusher.PusherStatic, client: KunaApiV3BaseInterface) {
+        this.client = client;
+        this.pusher = new PusherBuilder(KUNA_PUSHER_KEY, {
             encrypted: true,
             wsHost: KUNA_PUSHER_HOST,
             wsPort: 443,

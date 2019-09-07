@@ -121,7 +121,7 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         format: '0,0',
     },
     [KunaAssetUnit.BinanceCoin]: {
-        key: KunaAssetUnit.KunaToken,
+        key: KunaAssetUnit.BinanceCoin,
         name: 'Binance Coin',
         color: AssetColor.BinanceCoin,
         backgroundColor: '#1A1A1A',
