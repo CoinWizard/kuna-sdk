@@ -48,7 +48,7 @@ export default class FiatProvider {
     ): Promise<any> {
 
         const requestData = {
-            currency: currency.toUpperCase(),
+            currency: currency.toLowerCase(),
         };
 
         const response

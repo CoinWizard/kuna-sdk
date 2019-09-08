@@ -246,10 +246,6 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
 
     public async getLandingPageStatistics(): Promise<KunaV3Currency[]> {
-        console.warn(
-            `Please! Don't use the method KunaApiV3Client::getLandingPageStatistics()`,
-        );
-
         const response = await this.client.get('/v3/landing_page_statistic');
 
         return response.data;
