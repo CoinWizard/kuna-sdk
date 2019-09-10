@@ -54,13 +54,13 @@ export default class FiatProvider {
         return response.data;
     }
 
-    public async exchangeRate(currency: string) {
+    public async exchangeRates(currency: string) {
         const requestData = {
             currency: currency.toLowerCase(),
         };
 
         const response
-            = await this.client.getClient().post('/v3/deposit/exchange-rate', requestData);
+            = await this.client.getClient().post('/v3/deposit/exchange-rates', requestData);
 
         return response.data;
     }
