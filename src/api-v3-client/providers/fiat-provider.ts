@@ -43,16 +43,24 @@ export default class FiatProvider {
         return response.data;
     }
 
-    public async paymentPrerequest(
-        currency: string,
-    ): Promise<any> {
-
+    public async paymentPrerequest(currency: string): Promise<any> {
         const requestData = {
             currency: currency.toLowerCase(),
         };
 
         const response
             = await this.client.getClient().post('/v3/deposit/prerequest', requestData);
+
+        return response.data;
+    }
+
+    public async exchangeRate(currency: string) {
+        const requestData = {
+            currency: currency.toLowerCase(),
+        };
+
+        const response
+            = await this.client.getClient().post('/v3/deposit/exchange-rate', requestData);
 
         return response.data;
     }
