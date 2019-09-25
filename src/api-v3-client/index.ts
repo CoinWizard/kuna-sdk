@@ -41,7 +41,6 @@ export {
     KunaV3Currency,
     KunaV3LandingPageStatistic,
     KunaV3Market,
-    KunaAPIToken,
     KunaV3MePublicKeys,
     KunaV3Me,
     KunaV3SendToParams,
@@ -49,6 +48,8 @@ export {
     KunaV3IOFee,
     KunaV3Fee,
     HistoryResolutions,
+
+    KunaAPIToken,
 };
 
 export default class KunaApiV3Client implements KunaApiV3BaseInterface {
