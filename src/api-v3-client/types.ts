@@ -103,6 +103,38 @@ export type KunaAPIToken = {
     privateKey: string;
 };
 
+
+export type KunaV3IOFee = {
+    type: 'fixed' | 'percent';
+    amount?: string;
+    asset?: {
+        amount: string;
+        currency: string;
+        to_usd: string;
+    };
+};
+
+
+export type KunaV3Fee = {
+    code: string;
+    currency: string;
+    category: 'coin' | 'rub' | 'uah' | 'usd';
+
+    deposit_fees: KunaV3IOFee[];
+    withdraw_fees: KunaV3IOFee[];
+    min_deposit?: {
+        amount: number;
+        currency: string;
+        to_usd: number;
+    };
+    min_withdraw?: {
+        amount: number;
+        currency: string;
+        to_usd: number;
+    };
+};
+
+
 export interface KunaApiV3BaseInterface {
     privateRequest<R = any>(
         path: string,

@@ -19,6 +19,9 @@ export enum KunaAssetUnit {
 
     Waves = 'WAVES',
     Golos = 'GOL',
+    GolosGold = 'GBG',
+    GolosNew = 'GOLOS',
+    Cyber = 'CYBER',
 
     Remme = 'REM',
     Karbo = 'KRB',
@@ -55,8 +58,6 @@ export enum KunaAssetUnit {
     Everus = 'EVR',
     /** @deprecated */
     ERC20 = 'ERC20',
-    /** @deprecated */
-    GolosGold = 'GBG',
     /** @deprecated */
     FoodCoin = 'FOOD',
     /** @deprecated */
@@ -180,6 +181,20 @@ export const kunaAssets: Record<KunaAssetUnit | string, KunaAsset> = {
         key: KunaAssetUnit.Golos,
         name: 'Golos',
         color: AssetColor.Golos,
+        backgroundColor: '#FFF',
+        format: '0,0.[0000]',
+    },
+    [KunaAssetUnit.GolosNew]: {
+        key: KunaAssetUnit.GolosNew,
+        name: 'Golos',
+        color: AssetColor.GolosNew,
+        backgroundColor: '#FFF',
+        format: '0,0.[0000]',
+    },
+    [KunaAssetUnit.Cyber]: {
+        key: KunaAssetUnit.Cyber,
+        name: 'Cyber',
+        color: AssetColor.Cyber,
         backgroundColor: '#FFF',
         format: '0,0.[0000]',
     },

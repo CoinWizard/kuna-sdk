@@ -11,6 +11,7 @@ import crypto from 'crypto';
 import pusher from 'pusher-js';
 import Axios, { AxiosInstance, AxiosRequestConfig, Method } from 'axios';
 import { mapTicker, mapOrderBook } from './utils';
+import { KunaCodeProvider, FiatProvider, PusherProvider, ChartProvider } from './providers';
 
 import {
     KunaV3Ticker,
@@ -27,10 +28,10 @@ import {
     KunaV3Me,
     KunaV3SendToParams,
     KunaV3SendTo,
+    KunaV3IOFee,
+    KunaV3Fee,
     HistoryResolutions,
 } from './types';
-
-import { KunaCodeProvider, FiatProvider, PusherProvider, ChartProvider } from './providers';
 
 export {
     KunaV3Ticker,
@@ -45,6 +46,8 @@ export {
     KunaV3Me,
     KunaV3SendToParams,
     KunaV3SendTo,
+    KunaV3IOFee,
+    KunaV3Fee,
     HistoryResolutions,
 };
 
@@ -160,7 +163,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
     }
 
 
-    public async getFees(): Promise<any> {
+    public async getFees(): Promise<KunaV3Fee[]> {
         const response = await this.client.get('/v3/fees');
 
         return response.data;

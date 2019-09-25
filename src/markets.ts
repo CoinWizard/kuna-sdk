@@ -99,13 +99,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
-    goluah: {
-        key: 'goluah',
-        baseAsset: KunaAssetUnit.Golos,
-        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
-        format: '0,0.[00]',
-        decimal: 2,
-    },
     wavesuah: {
         key: 'wavesuah',
         baseAsset: KunaAssetUnit.Waves,
@@ -148,26 +141,12 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
-    usduah: {
-        key: 'usduah',
-        baseAsset: KunaAssetUnit.USDollar,
-        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
-        format: '0,0.[00]',
-        decimal: 2,
-    },
     tusduah: {
         key: 'tusduah',
         baseAsset: KunaAssetUnit.TrueUSD,
         quoteAsset: KunaAssetUnit.UkrainianHryvnia,
         format: '0,0.[00]',
         decimal: 2,
-    },
-    eursuah: {
-        key: 'eursuah',
-        baseAsset: KunaAssetUnit.StasisEuro,
-        quoteAsset: KunaAssetUnit.UkrainianHryvnia,
-        format: '0,0.[0000]',
-        decimal: 4,
     },
 
     /**
@@ -181,27 +160,27 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         decimal: 2,
         compareTo: 'btcusd',
     },
-    ethusdt: {
-        key: 'ethusdt',
-        baseAsset: KunaAssetUnit.Ethereum,
-        quoteAsset: KunaAssetUnit.Tether,
-        format: '0,0.[00]',
-        decimal: 2,
-        compareTo: 'ethusd',
-    },
-    bnbusdt: {
-        key: 'bnbusdt',
-        baseAsset: KunaAssetUnit.BinanceCoin,
-        quoteAsset: KunaAssetUnit.Tether,
-        format: '0,0.[00]',
-        decimal: 2,
-    },
     gbgusdt: {
         key: 'gbgusdt',
         baseAsset: KunaAssetUnit.GolosGold,
         quoteAsset: KunaAssetUnit.Tether,
         format: '0,0.[000000]',
         decimal: 6,
+    },
+
+    golosusdt: {
+        key: 'golosusdt',
+        baseAsset: KunaAssetUnit.GolosNew,
+        quoteAsset: KunaAssetUnit.Tether,
+        format: '0,0.[0000]',
+        decimal: 4,
+    },
+    cyberusdt: {
+        key: 'cyberusdt',
+        baseAsset: KunaAssetUnit.Cyber,
+        quoteAsset: KunaAssetUnit.Tether,
+        format: '0,0.[0000]',
+        decimal: 4,
     },
 
 
@@ -215,13 +194,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[000000]',
         decimal: 6,
     },
-    bnbbtc: {
-        key: 'bnbbtc',
-        baseAsset: KunaAssetUnit.BinanceCoin,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[0000]',
-        decimal: 4,
-    },
     ethbtc: {
         key: 'ethbtc',
         baseAsset: KunaAssetUnit.Ethereum,
@@ -232,13 +204,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
     eosbtc: {
         key: 'eosbtc',
         baseAsset: KunaAssetUnit.EOS,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
-        decimal: 6,
-    },
-    bchbtc: {
-        key: 'bchbtc',
-        baseAsset: KunaAssetUnit.BitcoinCash,
         quoteAsset: KunaAssetUnit.Bitcoin,
         format: '0,0.[000000]',
         decimal: 6,
@@ -257,13 +222,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[000000]',
         decimal: 6,
     },
-    arnbtc: {
-        key: 'arnbtc',
-        baseAsset: KunaAssetUnit.Aeron,
-        quoteAsset: KunaAssetUnit.Bitcoin,
-        format: '0,0.[000000]',
-        decimal: 6,
-    },
     ptibtc: {
         key: 'ptibtc',
         baseAsset: KunaAssetUnit.PaytomatToken,
@@ -278,29 +236,17 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00000000]',
         decimal: 8,
     },
-
-
-    /**
-     * to Stasis Euro
-     */
-    btceurs: {
-        key: 'btceurs',
-        baseAsset: KunaAssetUnit.Bitcoin,
-        quoteAsset: KunaAssetUnit.StasisEuro,
-        format: '0,0.[0000]',
-        decimal: 4,
+    cyberbtc: {
+        key: 'cyberbtc',
+        baseAsset: KunaAssetUnit.Cyber,
+        quoteAsset: KunaAssetUnit.Bitcoin,
+        format: '0,0.[00000000]',
+        decimal: 8,
     },
 
     /**
      * to U.S. Dollar
      */
-    ethusd: {
-        key: 'ethusd',
-        baseAsset: KunaAssetUnit.Ethereum,
-        quoteAsset: KunaAssetUnit.USDollar,
-        format: '0,0.[00]',
-        decimal: 2,
-    },
     btcusd: {
         key: 'btcusd',
         baseAsset: KunaAssetUnit.Bitcoin,
@@ -308,24 +254,6 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
         compareTo: 'btcusd',
-    },
-    bnbusd: {
-        key: 'bnbusd',
-        baseAsset: KunaAssetUnit.BinanceCoin,
-        quoteAsset: KunaAssetUnit.USDollar,
-        format: '0,0.[00]',
-        decimal: 2,
-    },
-
-    /**
-     * to Ethereum
-     */
-    remeth: {
-        key: 'remeth',
-        baseAsset: KunaAssetUnit.Remme,
-        quoteAsset: KunaAssetUnit.Ethereum,
-        format: '0,0.[00000000]',
-        decimal: 8,
     },
 
     /**
