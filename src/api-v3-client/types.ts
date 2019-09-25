@@ -89,6 +89,11 @@ export type KunaV3SendToParams = {
 
     comment?: string;
     channel?: string;
+
+    payment_service?: string;
+    return_url?: string;
+    fields?: any;
+    worldwide?: boolean;
 };
 
 export type KunaV3SendTo = {
