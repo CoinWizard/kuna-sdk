@@ -13,6 +13,9 @@ export default class FiatProvider {
         });
     }
 
+    public getPayClient(): AxiosInstance {
+        return this.payClient;
+    }
 
     public async getPublicKeys(): Promise<KunaV3MePublicKeys> {
         const me = await this.client.me();

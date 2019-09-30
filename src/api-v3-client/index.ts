@@ -375,7 +375,7 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
         );
     }
 
-    public async creteDepositAddress(currency: string): Promise<any> {
+    public async createDepositAddress(currency: string): Promise<any> {
         return await this.privateRequest(
             '/v3/auth/payment_addresses',
             'POST',

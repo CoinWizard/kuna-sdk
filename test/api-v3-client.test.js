@@ -43,7 +43,7 @@ describe('Test API V3 Client', () => {
 
     it('Test Create Deposit addresses', async () => {
         try {
-            const data = await apiClient.creteDepositAddress('ltc');
+            const data = await apiClient.createDepositAddress('ltc');
             assert.ok(data, 'Response must be an object');
         } catch (error) {
 
