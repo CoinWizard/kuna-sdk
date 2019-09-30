@@ -56,7 +56,7 @@ export default class FiatProvider {
     }
 
 
-    public async exchangeRates(currency: string) {
+    public async exchangeRates(currency: string): Promise<any> {
         const requestData = {
             currency: currency.toLowerCase(),
         };
@@ -82,10 +82,10 @@ export default class FiatProvider {
             public_key: publicKey,
         };
 
-        const response
+        const { data }
             = await this.payClient.post('/payment-prerequest', requestData);
 
-        return response.data;
+        return data.data;
     }
 
 
