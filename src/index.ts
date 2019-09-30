@@ -17,8 +17,13 @@ export {
     KunaV3SendTo,
     KunaV3IOFee,
     KunaV3Fee,
-    HistoryResolutions,
+    KunaV3PaymentField,
+    KunaV3PaymentService,
+    KunaV3PaymentMethod,
+    KunaV3Prerequest,
 
+    HistoryResolutions,
+    KunaLanguageAsset,
     KunaAPIToken,
 } from './api-v3-client';
 

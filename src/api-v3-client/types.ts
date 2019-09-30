@@ -69,6 +69,7 @@ export type KunaV3MePublicKeys = {
     deposit_sdk_uah_public_key: string;
     deposit_sdk_usd_public_key: string;
     deposit_sdk_rub_public_key: string;
+    deposit_sdk_uah_worldwide_public_key: string;
     [key: string]: string;
 
 }
@@ -119,6 +120,7 @@ export type KunaV3IOFee = {
     };
 };
 
+export type KunaLanguageAsset = 'ru' | 'en' | 'ua';
 
 export type KunaV3Fee = {
     code: string;
@@ -137,6 +139,61 @@ export type KunaV3Fee = {
         currency: string;
         to_usd: number;
     };
+};
+
+export type KunaV3PaymentField = {
+    key: string;
+    type: 'string' | 'array' | 'object' | 'number';
+    label: Record<KunaLanguageAsset, string>;
+    hint: Record<KunaLanguageAsset, string>;
+    example?: any;
+    regexp?: string;
+    required: boolean;
+    position: number;
+};
+
+export type KunaV3PaymentService = {
+    code: string;
+    method: string;
+    flow: string;
+    currency: string;
+    fields: KunaV3PaymentField[];
+    amount_min: number;
+    amount_max: number;
+    exchange_rate?: number;
+    amount?: number;
+    fee: {
+        rate: number;
+        fixed: number;
+        min: number;
+        max: number;
+    }
+};
+
+export type KunaV3PaymentMethod = {
+    code: string;
+    category: string;
+    description: string;
+    name: Record<KunaLanguageAsset, string>;
+    logo: string;
+    icon: string;
+    metadata: any;
+    position: number;
+    hide: boolean;
+};
+
+export type KunaV3Prerequest = {
+    amount?: number;
+    currency: string;
+    test_mode: boolean;
+    services: Record<string, KunaV3PaymentService>;
+    methods: Record<string, KunaV3PaymentMethod>;
+    account: {
+        name: string;
+        description: string;
+        icon: string;
+        website: string;
+    }
 };
 
 

@@ -129,6 +129,13 @@ describe('Test API V3 Client', () => {
         assert.strictEqual(typeof data, 'object');
     });
 
+    it('Deposit / Payment Pre Request Sign', async () => {
+        const data = await apiClient.fiat().paymentPrerequestSign('UAH');
+        assert.strictEqual(typeof data, 'object');
+
+        assert.ok(data.service);
+    });
+
     it('Deposit / Payment Pre Request', async () => {
         const data = await apiClient.fiat().paymentPrerequest('UAH');
         assert.strictEqual(typeof data, 'object');

@@ -1,4 +1,4 @@
-import { KunaApiV3BaseInterface, KunaV3MePublicKeys } from '../types';
+import { KunaApiV3BaseInterface, KunaV3MePublicKeys, KunaV3Prerequest } from '../types';
 import Axios, { AxiosInstance } from 'axios';
 
 export default class FiatProvider {
@@ -9,10 +9,10 @@ export default class FiatProvider {
         this.client = client;
 
         this.payClient = Axios.create({
-            // baseURL: 'https://pay.kuna.io/public-api',
-            baseURL: 'https://com.paycore.io/public-api',
+            baseURL: 'https://pay.kuna.io/public-api',
         });
     }
+
 
     public async getPublicKeys(): Promise<KunaV3MePublicKeys> {
         const me = await this.client.me();
@@ -20,15 +20,15 @@ export default class FiatProvider {
         return me.public_keys;
     }
 
+
     public async payoutPrerequest(
         currency: string,
         amount: number,
+        isWorldwide: boolean = false,
     ): Promise<any> {
         const keys = await this.getPublicKeys();
 
-        const publicKeyIndex
-            = `deposit_sdk_${currency.toLowerCase()}_public_key`;
-
+        const publicKeyIndex = FiatProvider.buildDepositPublicKeyIndex(currency, isWorldwide);
         const publicKey = keys[publicKeyIndex];
 
         const requestData = {
@@ -43,6 +43,7 @@ export default class FiatProvider {
         return response.data;
     }
 
+
     public async paymentPrerequest(currency: string): Promise<any> {
         const requestData = {
             currency: currency.toLowerCase(),
@@ -53,6 +54,7 @@ export default class FiatProvider {
 
         return response.data;
     }
+
 
     public async exchangeRates(currency: string) {
         const requestData = {
@@ -65,13 +67,14 @@ export default class FiatProvider {
         return response.data;
     }
 
+
     public async paymentPrerequestSign(
         currency: string,
-    ): Promise<any> {
+        isWorldwide: boolean = false,
+    ): Promise<KunaV3Prerequest> {
         const keys = await this.getPublicKeys();
 
-        const publicKeyIndex
-            = `deposit_sdk_${currency.toLowerCase()}_public_key`;
+        const publicKeyIndex = FiatProvider.buildDepositPublicKeyIndex(currency, isWorldwide);
         const publicKey = keys[publicKeyIndex];
 
         const requestData = {
@@ -83,5 +86,17 @@ export default class FiatProvider {
             = await this.payClient.post('/payment-prerequest', requestData);
 
         return response.data;
+    }
+
+
+    protected static buildDepositPublicKeyIndex(currency: string, isWorldwide: boolean = false): string {
+        return [
+            'deposit_sdk',
+            currency.toLowerCase(),
+            isWorldwide ? 'worldwide' : undefined,
+            'public_key',
+        ]
+            .filter((s: any) => !!s)
+            .join('_');
     }
 }

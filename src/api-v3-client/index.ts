@@ -30,6 +30,12 @@ import {
     KunaV3SendTo,
     KunaV3IOFee,
     KunaV3Fee,
+    KunaV3PaymentField,
+    KunaV3PaymentService,
+    KunaV3PaymentMethod,
+    KunaV3Prerequest,
+
+    KunaLanguageAsset,
     HistoryResolutions,
 } from './types';
 
@@ -47,8 +53,13 @@ export {
     KunaV3SendTo,
     KunaV3IOFee,
     KunaV3Fee,
-    HistoryResolutions,
+    KunaV3PaymentField,
+    KunaV3PaymentService,
+    KunaV3PaymentMethod,
+    KunaV3Prerequest,
 
+    KunaLanguageAsset,
+    HistoryResolutions,
     KunaAPIToken,
 };
 
