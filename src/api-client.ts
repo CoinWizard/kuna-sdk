@@ -139,6 +139,27 @@ export class KunaApiClient {
     }
 
 
+    public async newMarketOrder(
+        side: string,
+        volume: number,
+        market: string,
+        isQuote: boolean = false,
+    ): Promise<KunaOrder> {
+        const requestParams = {
+            market: market,
+            ord_type: isQuote ? 'market_by_quote' : 'market',
+            side: side,
+            volume: volume,
+        };
+
+        const data = await this.privateRequest('/orders', requestParams, 'POST');
+
+        this.debug('newOrder data=', data);
+
+        return mapOrder(data);
+    }
+
+
     public async cancelOrder(id: number): Promise<KunaOrder> {
 
         const data = await this.privateRequest('/order/delete', { id: id }, 'POST');
