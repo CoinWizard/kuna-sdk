@@ -113,13 +113,20 @@ export class KunaApiClient {
         return flatMap(data, mapTrade);
     }
 
-
     public async getUserOrders(market: string): Promise<KunaOrder[]> {
         const data = await this.privateRequest('/orders', { market: market });
 
         this.debug('getUserTrades data = ', data);
 
         return flatMap(data, mapOrder);
+    }
+
+    public async getUserOrder(orderID: string): Promise<KunaOrder> {
+        const data = await this.privateRequest('/order', { id: orderID });
+
+        this.debug('getUserOrder data = ', data);
+
+        return mapOrder(data);
     }
 
 
@@ -170,7 +177,7 @@ export class KunaApiClient {
     }
 
 
-    protected async privateRequest<R = object>(path: string, params: object = {}, method: Method = 'GET'): Promise<R> {
+    public async privateRequest<R = object>(path: string, params: object = {}, method: Method = 'GET'): Promise<R> {
         const tonce = new Date().getTime();
 
         let requestParams = {
