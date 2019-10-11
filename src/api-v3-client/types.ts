@@ -197,6 +197,37 @@ export type KunaV3Prerequest = {
 };
 
 
+export type KunaV3CoinWithdrawParams = {
+    currency: string;
+    amount: string | number;
+    address: string;
+    memo?: string;
+
+    allowBlankMemo?: boolean;
+    includeFee?: boolean;
+};
+
+export type KunaV3Withdraw = {
+    status: string;
+    message: string;
+    withdrawal_id: string;
+};
+
+export type KunaV3WithdrawDetail = {
+    id: number;
+    created_at: string;
+    destination: string;
+    currency: string;
+    amount: string;
+    status: string;
+    txid?: string;
+    sn: string;
+    fee: string;
+    total_amount: string;
+    reference_id: any;
+};
+
+
 export interface KunaApiV3BaseInterface {
     privateRequest<R = any>(
         path: string,

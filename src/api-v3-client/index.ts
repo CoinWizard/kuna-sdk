@@ -34,6 +34,9 @@ import {
     KunaV3PaymentService,
     KunaV3PaymentMethod,
     KunaV3Prerequest,
+    KunaV3CoinWithdrawParams,
+    KunaV3Withdraw,
+    KunaV3WithdrawDetail,
 
     KunaLanguageAsset,
     HistoryResolutions,
@@ -57,6 +60,9 @@ export {
     KunaV3PaymentService,
     KunaV3PaymentMethod,
     KunaV3Prerequest,
+    KunaV3CoinWithdrawParams,
+    KunaV3Withdraw,
+    KunaV3WithdrawDetail,
 
     KunaLanguageAsset,
     HistoryResolutions,
@@ -417,6 +423,39 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             `/v3/auth/deposit/details`,
             'POST',
             { id: id },
+        );
+    }
+
+    public async requestCoinWithdraw(params: KunaV3CoinWithdrawParams): Promise<KunaV3Withdraw> {
+        const requestData = {
+            withdraw_type: params.currency.toLowerCase(),
+            amount: params.amount,
+            address: params.address,
+            payment_id: params.memo,
+            allow_blank_memo: params.allowBlankMemo,
+            withdrawal: params.includeFee,
+        };
+
+        const data = await this.privateRequest<KunaV3Withdraw[]>('/v3/auth/withdraw', 'POST', requestData);
+
+        const withdrawResponse = data[0];
+        if (!withdrawResponse) {
+            throw new Error('No withdraw response');
+        }
+
+        return withdrawResponse;
+    }
+
+
+    public async withdrawDetails(withdrawID: string | number): Promise<KunaV3WithdrawDetail> {
+        const requestData = {
+            id: withdrawID,
+        };
+
+        return await this.privateRequest<KunaV3WithdrawDetail>(
+            '/v3/auth/withdraw/details',
+            'POST',
+            requestData,
         );
     }
 }

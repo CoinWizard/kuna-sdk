@@ -21,6 +21,9 @@ export {
     KunaV3PaymentService,
     KunaV3PaymentMethod,
     KunaV3Prerequest,
+    KunaV3CoinWithdrawParams,
+    KunaV3Withdraw,
+    KunaV3WithdrawDetail,
 
     HistoryResolutions,
     KunaLanguageAsset,
