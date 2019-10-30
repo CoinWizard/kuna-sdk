@@ -16,58 +16,22 @@ import { KunaCodeProvider, FiatProvider, PusherProvider, ChartProvider } from '.
 import {
     KunaV3Ticker,
     KunaV3OrderBook,
-    KunaV3Order,
     KunaV3ExchangeRate,
     KunaV3Currency,
-    KunaV3LandingPageStatistic,
     KunaV3Market,
     KunaV3LastTrade,
     KunaAPIToken,
     KunaApiV3BaseInterface,
-    KunaV3MePublicKeys,
-    KunaV3Me,
     KunaV3SendToParams,
     KunaV3SendTo,
-    KunaV3IOFee,
     KunaV3Fee,
-    KunaV3PaymentField,
-    KunaV3PaymentService,
-    KunaV3PaymentMethod,
-    KunaV3Prerequest,
     KunaV3CoinWithdrawParams,
     KunaV3Withdraw,
     KunaV3WithdrawDetail,
-
-    KunaLanguageAsset,
     HistoryResolutions,
 } from './types';
 
-export {
-    KunaV3Ticker,
-    KunaV3OrderBook,
-    KunaV3Order,
-    KunaV3ExchangeRate,
-    KunaV3Currency,
-    KunaV3LandingPageStatistic,
-    KunaV3Market,
-    KunaV3MePublicKeys,
-    KunaV3Me,
-    KunaV3SendToParams,
-    KunaV3SendTo,
-    KunaV3IOFee,
-    KunaV3Fee,
-    KunaV3PaymentField,
-    KunaV3PaymentService,
-    KunaV3PaymentMethod,
-    KunaV3Prerequest,
-    KunaV3CoinWithdrawParams,
-    KunaV3Withdraw,
-    KunaV3WithdrawDetail,
-
-    KunaLanguageAsset,
-    HistoryResolutions,
-    KunaAPIToken,
-};
+export * from './types';
 
 export default class KunaApiV3Client implements KunaApiV3BaseInterface {
 
@@ -436,7 +400,11 @@ export default class KunaApiV3Client implements KunaApiV3BaseInterface {
             withdrawal: params.includeFee,
         };
 
-        const data = await this.privateRequest<KunaV3Withdraw[]>('/v3/auth/withdraw', 'POST', requestData);
+        const data = await this.privateRequest<KunaV3Withdraw[]>(
+            '/v3/auth/withdraw',
+            'POST',
+            requestData,
+        );
 
         const withdrawResponse = data[0];
         if (!withdrawResponse) {

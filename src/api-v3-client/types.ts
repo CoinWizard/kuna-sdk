@@ -227,6 +227,52 @@ export type KunaV3WithdrawDetail = {
     reference_id: any;
 };
 
+export type KunaV3PaymentInvoiceRequest = {
+    public_key: string;
+    reference_id: string;
+    description: string;
+    service: 'payment_card_uah_hpp' | string;
+    currency: 'UAH' | 'USD' | 'RUB' | string;
+    amount: number;
+    customer: {
+        reference_id: string;
+        email: string;
+    };
+};
+
+
+export type KunaV3PaymentInvoice = {
+    id: string;
+    amount: number;
+    status: string;
+    created: number;
+    service: 'payment_card_uah_hpp' | string;
+    currency: 'UAH' | 'USD' | 'RUB' | string;
+    test_mode: boolean;
+    resolution: string;
+    return_url?: string;
+    description: string;
+    reference_id: string;
+    service_flow: string;
+    serial_number: string;
+    active_payment: {
+        status: string;
+        payload: {
+            action: string;
+            method: string;
+            params: any
+            metadata: []
+        }
+        resolution: string;
+    }
+    payment_amount: number
+    service_method: string;
+    refunded_amount: null
+    processed_amount: null
+    service_currency: 'UAH' | 'USD' | 'RUB' | string;
+    metadata: any;
+};
+
 
 export interface KunaApiV3BaseInterface {
     privateRequest<R = any>(

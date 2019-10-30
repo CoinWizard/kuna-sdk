@@ -1,4 +1,10 @@
-import { KunaApiV3BaseInterface, KunaV3MePublicKeys, KunaV3Prerequest } from '../types';
+import {
+    KunaApiV3BaseInterface,
+    KunaV3MePublicKeys,
+    KunaV3Prerequest,
+    KunaV3PaymentInvoiceRequest,
+    KunaV3PaymentInvoice,
+} from '../types';
 import Axios, { AxiosInstance } from 'axios';
 
 export default class FiatProvider {
@@ -9,11 +15,23 @@ export default class FiatProvider {
         this.client = client;
 
         this.payClient = Axios.create({
-            baseURL: 'https://pay.kuna.io/public-api',
+            baseURL: 'https://paygate.kuna.io/public-api',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
     }
 
-    public getPayClient(): AxiosInstance {
+    public getPayClient(baseURL?: string): AxiosInstance {
+        if (baseURL) {
+            return Axios.create({
+                baseURL: baseURL,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        }
+
         return this.payClient;
     }
 
@@ -41,7 +59,7 @@ export default class FiatProvider {
         };
 
         const response
-            = await this.payClient.post('/payout-prerequest', requestData);
+            = await this.getPayClient().post('/payout-prerequest', requestData);
 
         return response.data;
     }
@@ -56,6 +74,14 @@ export default class FiatProvider {
             = await this.client.getClient().post('/v3/deposit/prerequest', requestData);
 
         return response.data;
+    }
+
+
+    public async createPaymentInvoice(requestData: KunaV3PaymentInvoiceRequest): Promise<KunaV3PaymentInvoice> {
+        const { data }
+            = await this.getPayClient().post<{ data: KunaV3PaymentInvoice }>('/payment-invoices', requestData);
+
+        return data.data;
     }
 
 
@@ -86,7 +112,7 @@ export default class FiatProvider {
         };
 
         const { data }
-            = await this.payClient.post('/payment-prerequest', requestData);
+            = await this.getPayClient().post('/payment-prerequest', requestData);
 
         return data.data;
     }
