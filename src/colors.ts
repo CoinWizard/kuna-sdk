@@ -7,7 +7,7 @@ export enum AssetColor {
     Dash = '#008DE4',
     Litecoin = '#CBC6C6',
 
-    BitcoinCash = '#F7931A',
+    BitcoinCash = '#4CCA47',
     BitcoinCashSV = '#EAB302',
     BitcoinCashABC = '#F49D18',
     Ripple = '#222222',
