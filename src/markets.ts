@@ -160,6 +160,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         decimal: 2,
         compareTo: 'btcusd',
     },
+    kunusdt: {
+        key: 'kunusdt',
+        baseAsset: KunaAssetUnit.KunaToken,
+        quoteAsset: KunaAssetUnit.Tether,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
     gbgusdt: {
         key: 'gbgusdt',
         baseAsset: KunaAssetUnit.GolosGold,
