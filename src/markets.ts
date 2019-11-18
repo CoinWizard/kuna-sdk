@@ -301,4 +301,13 @@ export const kunaMarketMap: Record<string, KunaMarket> = {
         format: '0,0.[00]',
         decimal: 2,
     },
+
+
+    cybergol: {
+        key: 'cybergol',
+        baseAsset: KunaAssetUnit.Cyber,
+        quoteAsset: KunaAssetUnit.Golos,
+        format: '0,0.[00]',
+        decimal: 2,
+    },
 };

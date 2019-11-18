@@ -65,9 +65,10 @@ export default class FiatProvider {
     }
 
 
-    public async paymentPrerequest(currency: string): Promise<any> {
+    public async paymentPrerequest(currency: string, forMerchant?: boolean): Promise<any> {
         const requestData = {
             currency: currency.toLowerCase(),
+            for_merchant: forMerchant,
         };
 
         const response
